@@ -198,9 +198,45 @@ namespace Task1
                     Console.WriteLine("final bill: " + totalBill + "OMR");
                 }
 
-            ////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////
+                //
 
+                //  task 9 Day Name Finder
+
+                Console.Write("Enter a a day number (1-7) :");
+                int daynumber = int.Parse(Console.ReadLine());
+
+                switch(daynumber)
+                {
+                    case 1:
+                        Console.WriteLine("Day: Sunday");
+                        break;
+                    case 2:
+                        Console.WriteLine("Day: Monday");
+                        break;
+                    case 3:
+                        Console.WriteLine("Day: Tuesday");
+                        break;
+                    case 4:
+                        Console.WriteLine("Day: Wednesday");
+                        break;
+                    case 5:
+                        Console.WriteLine("Day: Thursday");
+                        break;
+                    case 6:
+                        Console.WriteLine("Day: Friday");
+                        break;
+                    case 7:
+                        Console.WriteLine("Day: Saturday");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid day number.");
+                        break;
+                }
             }
+
+
+        }
         }
     }
 }
