@@ -233,10 +233,70 @@ namespace Task1
                         Console.WriteLine("Invalid day number.");
                         break;
                 }
-            }
+                ///////////////////////////////////////////////////////////////////////
 
+                // task 10 - Mini Calculator
 
-        }
+                Console.Write("Enter first Number :");
+                float firstNumber = float.Parse(Console.ReadLine());
+
+                Console.Write("Enter second number :");
+                float secondNumber = float.Parse(Console.ReadLine());
+
+               
+
+                Console.Write(" please Enter opirator ( +, -, *, /, %):");
+                char opirator = char.Parse(Console.ReadLine());
+
+                float result;
+
+                switch(opirator)
+                {
+                    case '+':
+                            result = firstNumber + secondNumber;
+                        Console.Write("Result" + result); 
+                        break;
+
+                    case '-':
+                        result = firstNumber - secondNumber;
+                        Console.Write("Result" + result);
+                        break;
+
+                    case '*':
+                        result = firstNumber * secondNumber;
+                        Console.Write("Result" + result);
+                        break;
+
+                    case '/':
+                        if(secondNumber != 0)
+                        {
+                            result = firstNumber / secondNumber;
+                            Console.Write("Result" + result);
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("can't divide by 0.");
+                        }
+                        break;
+
+                    case '%':
+                        if (secondNumber != 0)
+                        {
+                            result = firstNumber % secondNumber;
+                            Console.Write("Result" + result);
+                        }
+                        else
+                        {
+                            Console.WriteLine("can't divide by 0.");
+                        }
+                        break; 
+
+                    default:
+                        Console.WriteLine("Invalid operator.");
+                        break;
+                }
         }
     }
+}
 }
