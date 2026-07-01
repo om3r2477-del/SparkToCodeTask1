@@ -493,10 +493,80 @@ namespace Task1
                 Console.WriteLine("Tax: " + tax + " OMR");
                 Console.WriteLine("Final Total: " + finalltotal + " OMR");
 
+                ////////////////////////////////////////////////////////////////////////////////// 
 
 
-            }
+                //Task 15 - University Admission Decision
 
-        
+                Console.Write("Enter program type (S for Science, A for Arts): ");
+                char programType = char.Parse(Console.ReadLine());
+
+                Console.Write("Enter GPA out of 4.0: ");
+                double gpa = double.Parse(Console.ReadLine());
+
+                Console.Write("Enter entrance exam score out of 100: ");
+                double examScore = double.Parse(Console.ReadLine());
+
+                Console.Write(" do you have any extracurricular achievements (yes/no): ");
+                string achievements = Console.ReadLine();
+
+                string PrgramName = "";
+
+                switch (programType)
+                {
+                   case 'S':
+                    PrgramName = "Science";
+                        if (gpa >= 3.0 && examScore >= 75)
+                        {
+                            Console.WriteLine("Program type:" + PrgramName);
+                            Console.WriteLine("Admitted");
+
+                        }
+                        else
+                        {
+                            if (achievements == "yes")
+                            {
+                                Console.WriteLine("Program type:" + PrgramName);
+                                Console.WriteLine("conditonally Admitted");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Program type:" + PrgramName);
+                                Console.WriteLine("Not Admitted");
+                            }
+                        }
+                            break;
+                case 'A':
+                    PrgramName = "Arts";
+                    if (gpa >= 2.5 && examScore >= 60)
+                    {
+                            Console.WriteLine("Program type:" + PrgramName);
+                            Console.WriteLine("Admitted");
+                        }
+                    else
+                    {
+                     if(achievements == "yes")
+                            {
+                                Console.WriteLine("Program type:" + PrgramName);
+                                Console.WriteLine("Conditially Admitted");
+
+                            }
+                     else
+                            {
+                                Console.WriteLine("Program type:" + PrgramName);
+                                Console.WriteLine("Not Admitted");
+                            }
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid program type.");
+                    return;
+                    
+
+            
+
+
         }
 }}
+}}
+
