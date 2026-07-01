@@ -110,9 +110,38 @@ namespace Task1
                     Console.WriteLine("Invalid grade.");
                     break;
 
-                 //////////////////////////////////////////////////////
+                    
+
+
             }
 
+            //////////////////////////////////////////////////////
+
+
+            // Task 6 - Temperature Converter
+
+            Console.WriteLine("Enter temperature in Celsius: ");
+            float C = float.Parse(Console.ReadLine());
+
+            float Fahrenheit = (C * 9 / 5) + 32;
+
+            if(C < 10)
+            { 
+                Console.WriteLine("Cold");
+        }
+            else if(C >= 10 && C <= 30)
+            {
+                Console.WriteLine("Mild");
+            }
+            else
+            {
+                Console.WriteLine("Hot");
+                
+                Console.WriteLine("Temperature in Fahrenheit: " + Fahrenheit);
+                
+                    
+
+            }
         }
     }
 }
