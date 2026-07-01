@@ -21,6 +21,22 @@
             Console.Write("Age:" + userAge);
             Console.Write("Highe:" + userHight);
             Console.Write("student:" + isStudent);
+            /////////////////////////////////////////////////////////////////
+
+            //calculate and display the area and perimeter of rectangle 
+
+            Console.Write("Enter the length:");
+            double length = double.Parse(Console.ReadLine());
+
+            Console.Write("Enter the width:");
+            double width = double.Parse(Console.ReadLine());
+
+            double area = length * width;
+            double perimeter = 2 * (length + width);
+
+            Console.WriteLine("Area: " + area);
+            Console.WriteLine("Perimeter: " + perimeter);
+
 
         }
 
