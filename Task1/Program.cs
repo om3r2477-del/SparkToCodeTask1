@@ -335,7 +335,76 @@ namespace Task1
 
                 ////////////////////////////////////////////////////////
 
-        }
+                // Task 12 - Shipping Cost Calculator
+
+                Console.Write("Enter region code (A,B,C):");
+                char regionCode = char.Parse(Console.ReadLine());
+
+                Console.Write("Enter Package wight in (KG): ");
+                double packageWeight = double.Parse(Console.ReadLine());
+
+                double baseCost = 0;
+                double extracharge = 0;
+
+                switch(regionCode)
+                {
+                    case 'A':
+                        baseCost = 1.000;
+                        if(packageWeight > 10)
+                        {
+                            extracharge = 5.000;
+                        }
+                        else if (packageWeight > 5)
+                        {
+                            extracharge = 2.000;
+                }
+                        else
+                        {
+                            extracharge = 0;
+                        }
+                        break;
+                    case 'B':
+                        baseCost = 3.000;
+                        if(packageWeight > 10)
+                        {
+                            extracharge = 5.000;
+                        }
+                        else if (packageWeight > 5)
+                        {
+                            extracharge = 2.000;
+                        }
+                        else
+                        {
+                            extracharge = 0;
+                        }
+                
+                break;
+                    case 'C':
+                        baseCost = 7.000;
+                        if(packageWeight > 10)
+                        {
+                            extracharge = 5.000;
+                        }
+                        else if (packageWeight > 5)
+                        {
+                            extracharge = 2.000;
+                        }
+                        else
+                        {
+                            extracharge = 0;
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid region code.");
+                        return;
+                
+            }
+                Console.WriteLine("Base cost: " + baseCost + " OMR");
+                Console.WriteLine("Extra charge: " + extracharge + " OMR");
+                Console.WriteLine("Total shipping cost: " + (baseCost + extracharge) + " OMR");
+
+                /////////////////////////////////////////////////////////
+            }
         }
 }
 }
