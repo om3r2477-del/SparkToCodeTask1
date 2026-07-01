@@ -296,7 +296,46 @@ namespace Task1
                         Console.WriteLine("Invalid operator.");
                         break;
                 }
+                ///////////////////////////////////////////////////////////////
+
+                //Task 11 - Loan Eligibility System
+
+                Console.Write(" Please Enter your age: ");
+                int userAge4 = int.Parse(Console.ReadLine());
+
+                Console.Write(" Please Enter your monthly income: ");
+                float monthlyIncome = float.Parse(Console.ReadLine());
+
+                Console.Write("do you have existing loan (yes/no):");
+                string inputLoan = Console.ReadLine();
+
+                bool hasLoan = inputLoan == "yes";
+
+                if(userAge4 >= 21 && userAge4 <= 60 && monthlyIncome >= 400 && !hasLoan)
+                {
+                    Console.WriteLine("State: eligible for a loan.");
+                }
+                else
+                {
+                    Console.WriteLine("State: not eligible for a loan.");
+                if(userAge4 < 21 || userAge4 > 60)
+                    {
+                        Console.WriteLine("Reason: Age out of range.");
+                    }
+                if(monthlyIncome < 400)
+                    {
+                        Console.WriteLine("Reason: income to low.");
+                    }
+                if(hasLoan)
+                    {
+                        Console.WriteLine("Reason: existing loan.");
+                    }
+            
+            }
+
+                ////////////////////////////////////////////////////////
+
         }
-    }
+        }
 }
 }
