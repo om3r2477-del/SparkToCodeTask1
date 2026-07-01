@@ -440,7 +440,63 @@ namespace Task1
 
                 ///////////////////////////////////////////////////////////////////////
 
-            
+                //Task 14 - Online Store Checkout
+
+                Console.Write("Enter product code (1,2, 3): ");
+                int productCode = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter quantity: ");
+                int quantity = int.Parse(Console.ReadLine());
+
+                Console.Write("Do you have a discount coupon? (yes/no): ");
+                string coupon = Console.ReadLine();
+
+               double unitPrice = 0;
+                string productname = "";
+
+                switch (productCode)
+                {
+                    case 1:
+                        productname = "Headphones";
+                        unitPrice = 8.500;
+                        break;
+                    case 2:
+                        productname = "Keyboard";
+                        unitPrice = 12.000;
+                        break;
+                    case 3:
+                        productname = "Mouse";
+                        unitPrice = 5.000;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid product code.");
+                        return;
+                }
+                double subtotal = unitPrice * quantity;
+                double ddiscount = 0;
+                if (coupon == "yes" && subtotal > 20)
+                {
+                    ddiscount = subtotal * 0.10;
+                }
+                else
+                {
+                    ddiscount = 0;
+                }
+                double AmoountAfterDiscount = subtotal - ddiscount;
+                double tax = AmoountAfterDiscount * 0.05;
+
+                double finalltotal = AmoountAfterDiscount + tax;
+
+                Console.WriteLine("Product: " + productname);
+                Console.WriteLine("SubTotal: " + subtotal + " OMR");
+                Console.WriteLine("Discount: " + ddiscount + " OMR");
+                Console.WriteLine("Tax: " + tax + " OMR");
+                Console.WriteLine("Final Total: " + finalltotal + " OMR");
+
+
+
+            }
+
+        
         }
-}
 }}
