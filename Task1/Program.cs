@@ -169,8 +169,37 @@ namespace Task1
                     Console.WriteLine("Invalid age."); // if users agelower then 0 which is not possible 
                 }
 
-                ///////////////////////////////////////////////////////////
-                
+                ////////////////////////////////////////////////////////////////////
+
+                //Task 8 - Restaurant Bill with Membership Discount
+
+                Console.Write("Enter the total bill amount:");
+                float totalBill = float.Parse(Console.ReadLine());
+
+                Console.Write(" Are you a member ? (yes/no)");
+                string memberAnswer = Console.ReadLine();
+
+                bool isMember = memberAnswer == "yes";
+
+                if(totalBill > 20 && isMember)
+
+                {
+                    float discount = totalBill * 15 / 100;
+                    float finalBill = totalBill - discount;
+
+                    Console.WriteLine("Original bill: " + totalBill + "OMR");
+                    Console.WriteLine("Discount : " + discount + "OMR");
+                    Console.WriteLine("final bill: " + finalBill + "OMR");
+                }
+                else
+                {
+                    Console.WriteLine("Original bill: " + totalBill + "OMR");
+                    Console.WriteLine("Discount : 0 OMR");       //no disc
+                    Console.WriteLine("final bill: " + totalBill + "OMR");
+                }
+
+            ////////////////////////////////////////////////////////////////////
+
             }
         }
     }
