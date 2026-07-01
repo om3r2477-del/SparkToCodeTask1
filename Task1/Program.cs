@@ -33,12 +33,33 @@
 
             double area = length * width;
             double perimeter = 2 * (length + width);
+            
 
             Console.WriteLine("Area: " + area);
             Console.WriteLine("Perimeter: " + perimeter);
 
+            //////////////////////////////////////////////////////////////////////////
 
-        }
+
+            // Check if number is even or odd
+
+            Console.Write("Enter a whole number: ");
+
+            int wholenumber = int.Parse(Console.ReadLine());
+
+            if (wholenumber % 2 == 0) 
+            {
+                Console.WriteLine("The number is even.");
+            }
+            else
+            {
+                Console.WriteLine("The number is odd.");
+
+
+
+
+
+            }
 
 
     }
