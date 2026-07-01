@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.Metrics;
+using System.Net.Sockets;
 
 namespace Task1
 {
@@ -138,9 +139,38 @@ namespace Task1
                 Console.WriteLine("Hot");
                 
                 Console.WriteLine("Temperature in Fahrenheit: " + Fahrenheit);
-                
-                    
 
+                /////////////////////////////////////////////////////////////////////////
+
+
+                //Task 7 - Movie Ticket Pricing
+
+                Console.Write("Enter your age: ");
+                int userAge3 = int.Parse(Console.ReadLine());
+
+                if(userAge3 >= 0 && userAge3 <=12)
+                {
+                    Console.WriteLine("Catigory : Child");
+                    Console.WriteLine("Ticket Price: 2.000 OMR");
+
+                }
+                else if (userAge3 >= 13 && userAge3 <= 59)
+                {
+                    Console.WriteLine("Catigory : Adult");
+                    Console.WriteLine("Ticket Price: 5.000 OMR");
+                }
+                else if(userAge3 >= 60)
+                {
+                    Console.WriteLine("Catigory : Seniors");
+                    Console.WriteLine("Ticket Price:3.000 OMR");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid age."); // if users agelower then 0 which is not possible 
+                }
+
+                ///////////////////////////////////////////////////////////
+                
             }
         }
     }
