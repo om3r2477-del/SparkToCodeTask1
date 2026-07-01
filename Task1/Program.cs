@@ -1,4 +1,6 @@
-﻿namespace Task1
+﻿using System.Diagnostics.Metrics;
+
+namespace Task1
 {
     internal class Program
     {
@@ -78,8 +80,38 @@
             {
                 Console.WriteLine("You are not eligible to vote.");
             }
+
             ///////////////////////////////////////////////////////////
-              
+
+
+            //Task 5 - Grade Letter Lookup
+
+            Console.Write("please Enter your Gread ( A, B, C, D or F ): ");
+            char gerad = char.Parse(Console.ReadLine());
+
+            switch(gerad)
+            {
+                case 'A':
+                    Console.WriteLine("Excellent");
+                    break;
+                case 'B':
+                    Console.WriteLine("Very Good");
+                    break;
+                case 'C':
+                    Console.WriteLine("Good ");
+                    break;
+                case 'D':
+                    Console.WriteLine("Pass");
+                    break;
+                case 'F':
+                    Console.WriteLine("Fail");
+                    break;
+                default:
+                    Console.WriteLine("Invalid grade.");
+                    break;
+
+                 //////////////////////////////////////////////////////
+            }
 
         }
     }
