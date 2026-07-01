@@ -404,7 +404,43 @@ namespace Task1
                 Console.WriteLine("Total shipping cost: " + (baseCost + extracharge) + " OMR");
 
                 /////////////////////////////////////////////////////////
-            }
+
+
+                //Task 13 - Triangle Type Classifier
+
+                Console.Write("Enter the length of side A: ");
+                double sideA = double.Parse(Console.ReadLine());
+
+                Console.Write("Enter the length of side B: ");
+                double sideB = double.Parse(Console.ReadLine());
+
+                Console.Write("Enter the length of side C: ");
+                double sideC = double.Parse(Console.ReadLine());
+
+                if ((sideA + sideB > sideC) && (sideA + sideC > sideB) && (sideB + sideC > sideA))
+                {
+                    Console.WriteLine("The sides form a valid triangle.");
+                    if (sideA == sideB && sideB == sideC)
+                    {
+                        Console.WriteLine("The triangle is equilateral.");
+                    }
+                    else if (sideA == sideB || sideA == sideC || sideB == sideC)
+                    {
+                        Console.WriteLine("The triangle is isosceles.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("The triangle is scalene.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("The sides do not form a valid triangle.");
+                }
+
+                ///////////////////////////////////////////////////////////////////////
+
+            
         }
 }
-}
+}}
