@@ -116,8 +116,8 @@
             {
                 Console.WriteLine(" Invalid input");
             }
+            
             */
-
             ///////////////////////////////////////////////////////////
 
             //Task 7 - Repeating Menu with Exit Option
@@ -156,13 +156,29 @@
                 {
                     Console.WriteLine("Please enter a number.");
                 }
+                /////////////////////////////////////////////////////////////
+                
+            //Task 8 - Sum of Even Numbers Only
 
+            Console.WriteLine("Enter a whole pos number:");
+            int n = int.Parse(Console.ReadLine());
 
+            int sum = 0;
+
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    sum += i;
+                }
             }
+            Console.WriteLine(sum);
+            // Ex enter =6   = 2+4+6 = 12 
         }
-
     }
 }
+    }
+
     
 
 
