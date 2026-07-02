@@ -5,12 +5,13 @@
         static void Main(string[] args)
         {
             //Task 1 - Countdown Timer
-            
-            Console.WriteLine("Enter the starting number:");
-            int number = int.Parse(Console.ReadLine()); 
 
-            for(int i = number; i >= 1; i--) {
-            Console.WriteLine(i);
+            Console.WriteLine("Enter the starting number:");
+            int number = int.Parse(Console.ReadLine());
+
+            for (int i = number; i >= 1; i--)
+            {
+                Console.WriteLine(i);
             }
             Console.WriteLine("Liftoff !");
 
@@ -23,7 +24,7 @@
 
             int sum = 0;
 
-            for(int i = 1; i <= positiveNumber; i++)
+            for (int i = 1; i <= positiveNumber; i++)
             {
                 sum += i;
             }
@@ -36,10 +37,10 @@
             Console.Write("Enter a number :");
             int num = int.Parse(Console.ReadLine());
 
-            for(int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 Console.WriteLine(num + "*" + i + "=" + (num * i));
-               
+
                 ////////////////////////////////////////
 
                 //Task 4 - Password Retry
@@ -47,18 +48,18 @@
                 string password = "Spark2026";
                 string userPassword = "";
 
-                while(userPassword != password)
+                while (userPassword != password)
                 {
                     Console.Write("Enter the password :");
                     userPassword = Console.ReadLine();
-                    if(userPassword != password)
+                    if (userPassword != password)
                     {
                         Console.WriteLine("Incorrect password. Please try again.");
                     }
                 }
                 Console.WriteLine("Access granted!");
             }
-            
+
             ///////////////////////////////////////////////////////////////////       
 
             //Task 5 - Number Guessing Game
@@ -86,10 +87,41 @@
                 }
             } while (gusss != secretNumber);
             Console.WriteLine($"It took you {attempts} attempts.");
+
+
+            ///////////////////////////////////////////////////////////////////////
+
+            //Task 6 - Safe Division Calculator
+
+
+            try
+            {
+                Console.Write("Enter the first number:");
+                int num1 = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter the second number:");
+                int num2 = int.Parse(Console.ReadLine());
+
+                int result = num1 / num2;
+
+                Console.WriteLine("resutl is :" + result);
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Error: Division by zero is not allowed.");
+            }
+
+            catch (FormatException)
+
+            {
+                Console.WriteLine(" Invalid input");
+            }
         }
     }
+}
 
-            }
+
+            
         
 
 
