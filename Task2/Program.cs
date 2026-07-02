@@ -58,7 +58,34 @@
                 }
                 Console.WriteLine("Access granted!");
             }
+            
+            ///////////////////////////////////////////////////////////////////       
 
+            //Task 5 - Number Guessing Game
+
+            int secretNumber = 27; // my secret number is 27
+            int gusss;
+            int attempts = 0;
+
+            do
+            {
+                Console.Write("Guess the secret number:");
+                gusss = int.Parse(Console.ReadLine());
+                attempts++;
+                if (gusss > secretNumber)
+                {
+                    Console.WriteLine("Too high");
+                }
+                else if (gusss < secretNumber)
+                {
+                    Console.WriteLine("Too low.");
+                }
+                else
+                {
+                    Console.WriteLine($"you gussed the secret number");
+                }
+            } while (gusss != secretNumber);
+            Console.WriteLine($"It took you {attempts} attempts.");
         }
     }
 
