@@ -16,6 +16,20 @@
 
             ///////////////////////////////////////////////////
 
+            //Task 2 - Sum of Numbers 1 to N ex:5   = 1+2+3+4+5 = 15
+
+            Console.WriteLine("Enter a positive whole number:");
+            int positiveNumber = int.Parse(Console.ReadLine());
+
+            int sum = 0;
+
+            for(int i = 1; i <= positiveNumber; i++)
+            {
+                sum += i;
+            }
+            Console.WriteLine($"The sum is :" + sum);
+
+
         }
     }
     }
