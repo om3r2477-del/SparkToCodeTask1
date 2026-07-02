@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             //Task 1 - Countdown Timer
-
+            /*
             Console.WriteLine("Enter the starting number:");
             int number = int.Parse(Console.ReadLine());
 
@@ -116,12 +116,59 @@
             {
                 Console.WriteLine(" Invalid input");
             }
+            */
+
+            ///////////////////////////////////////////////////////////
+
+            //Task 7 - Repeating Menu with Exit Option
+
+
+
+
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("1) Say Hello");
+                    Console.WriteLine("2) Show Current Time-of-day ");
+                    Console.WriteLine("3) Exit");
+                    Console.Write("Enter your choice: ");
+
+                    int choice = int.Parse(Console.ReadLine());
+
+                    switch (choice)
+                    { 
+                     case 1:
+                        Console.WriteLine("Hello!");
+                        break;
+                    case 2:
+                        Console.WriteLine("Good Morning ");
+                        break;
+                    case 3:
+                        Console.WriteLine("Exit.");
+                        return;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Please enter a number.");
+                }
+
+
+            }
         }
+
     }
 }
+    
 
 
-            
-        
+
+
+
+
 
 
