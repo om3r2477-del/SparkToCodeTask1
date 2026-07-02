@@ -179,7 +179,7 @@
             
                 //////////////////////////////////////////////////////////////////////////////////////////
             }
-        */
+        
             // Task 9 - Validated Positive Number Input
 
             int n = 0;
@@ -213,11 +213,120 @@
             }
             Console.WriteLine(sum);
 
-        
+            ////////////////////////////////////////////////////////
+            ///
+            */
+            //Task 10 - Simple ATM Simulation
+
+            int pin = 1234;
+            double balance = 100.000;
+            int attempts = 0;
+            bool corecctPin = false;
+
+
+            while (attempts < 3 && !corecctPin)
+            {
+                try
+                {
+                    Console.Write("Enter your PIN:");
+                    int enterPin = int.Parse(Console.ReadLine());
+                
+                
+                if (enterPin == pin)
+                {
+                    corecctPin = true;
+                
+                }
+                else
+                {
+                    attempts++;
+                    
+                }
+            }
+                catch (FormatException)
+                {
+                    attempts++;
+                }
+            }
+
+            if(!corecctPin)
+            {
+                Console.WriteLine("Card Blooked.");
+               
+            }
+            else
+            { 
+            while(true)
+                {
+                    Console.WriteLine("1) Deposit");
+                    Console.WriteLine("2) Withdraw");
+                    Console.WriteLine("3) check balance");
+                    Console.WriteLine("4) Exit");
+                    Console.Write("Enter your choice:");
+                    int choice = int.Parse(Console.ReadLine());
+                    switch (choice)
+                    {
+                        case 1:
+                            try
+                            {
+                                Console.WriteLine($"Enter deposit amount: ");
+                                double Amount = double.Parse(Console.ReadLine());
+                                if (Amount < 0)
+                                {
+                                    Console.WriteLine("invalid amount.");
+                                }
+                                else
+                                {
+                                    balance = balance + Amount;
+                                    Console.WriteLine(balance);
+                                }
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Invalid input.");
+                            }
+                            break;
+                        case 2:
+                            try
+                            {
+
+                                Console.Write("Enter withdrawal amount:");
+                                double amount = double.Parse(Console.ReadLine());
+                                if (amount < 0)
+                                {
+
+                                    Console.WriteLine("invalid amount");
+                                }
+                                else if (amount > balance)
+                                {
+
+                                    Console.WriteLine("Insufficient balance");
+                                }
+                                else
+                                {
+                                    balance = balance - amount;
+                                    Console.WriteLine(balance);
+                                }
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Invalid input.");
+                            }
+                            break;
+                        case 3:
+                            
+                                Console.WriteLine(balance);
+                            break;
+                        case 4:
+                            return;
+                   
+                    }
+                }
         }
-    }
 }
-    
+}
+
+
 
 
 
