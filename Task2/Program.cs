@@ -4,8 +4,9 @@
     {
         static void Main(string[] args)
         {
-            //Task 1 - Countdown Timer
             /*
+            //Task 1 - Countdown Timer
+
             Console.WriteLine("Enter the starting number:");
             int number = int.Parse(Console.ReadLine());
 
@@ -116,8 +117,8 @@
             {
                 Console.WriteLine(" Invalid input");
             }
-            
-            */
+
+
             ///////////////////////////////////////////////////////////
 
             //Task 7 - Repeating Menu with Exit Option
@@ -137,19 +138,19 @@
                     int choice = int.Parse(Console.ReadLine());
 
                     switch (choice)
-                    { 
-                     case 1:
-                        Console.WriteLine("Hello!");
-                        break;
-                    case 2:
-                        Console.WriteLine("Good Morning ");
-                        break;
-                    case 3:
-                        Console.WriteLine("Exit.");
-                        return;
-                    default:
-                        Console.WriteLine("Invalid choice.");
-                        break;
+                    {
+                        case 1:
+                            Console.WriteLine("Hello!");
+                            break;
+                        case 2:
+                            Console.WriteLine("Good Morning ");
+                            break;
+                        case 3:
+                            Console.WriteLine("Exit.");
+                            return;
+                        default:
+                            Console.WriteLine("Invalid choice.");
+                            break;
                     }
                 }
                 catch (FormatException)
@@ -157,28 +158,65 @@
                     Console.WriteLine("Please enter a number.");
                 }
                 /////////////////////////////////////////////////////////////
+
+                //Task 8 - Sum of Even Numbers Only
                 
-            //Task 8 - Sum of Even Numbers Only
+                Console.WriteLine("Enter a whole pos number:");
+                int n = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter a whole pos number:");
-            int n = int.Parse(Console.ReadLine());
+                int sum = 0;
 
+                for (int i = 1; i <= n; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        sum += i;
+                    }
+                }
+                Console.WriteLine(sum);
+                // Ex enter =6   = 2+4+6 = 12 
+            }
+            
+                //////////////////////////////////////////////////////////////////////////////////////////
+            }
+        */
+            // Task 9 - Validated Positive Number Input
+
+            int n = 0;
+            bool valid = false;
+
+            do
+            {
+                try
+                {
+                    Console.WriteLine("Enter a positive whole number:");
+                    n = int.Parse(Console.ReadLine());
+                    if (n > 0)
+                    {
+                        valid = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a positive whole number.");
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input.");
+                }
+
+            } while (!valid);
             int sum = 0;
-
             for (int i = 1; i <= n; i++)
             {
-                if (i % 2 == 0)
-                {
-                    sum += i;
-                }
+                sum = sum + i;
             }
             Console.WriteLine(sum);
-            // Ex enter =6   = 2+4+6 = 12 
+
+        
         }
     }
 }
-    }
-
     
 
 
