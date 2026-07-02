@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             //Task 1 - Countdown Timer
-
+            
             Console.WriteLine("Enter the starting number:");
             int number = int.Parse(Console.ReadLine()); 
 
@@ -39,8 +39,30 @@
             for(int i = 1; i <= 10; i++)
             {
                 Console.WriteLine(num + "*" + i + "=" + (num * i));
+               
+                ////////////////////////////////////////
+
+                //Task 4 - Password Retry
+
+                string password = "Spark2026";
+                string userPassword = "";
+
+                while(userPassword != password)
+                {
+                    Console.Write("Enter the password :");
+                    userPassword = Console.ReadLine();
+                    if(userPassword != password)
+                    {
+                        Console.WriteLine("Incorrect password. Please try again.");
+                    }
+                }
+                Console.WriteLine("Access granted!");
+            }
 
         }
     }
-}}
+
+            }
+        
+
 
