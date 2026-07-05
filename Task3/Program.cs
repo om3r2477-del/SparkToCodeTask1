@@ -127,13 +127,13 @@
 
             //Task 8 - Membership Expiry Checker
 
-            */
+            
             try
             {
-                Console.WriteLine("Enter the membership expiry date (yyyy-MM-dd):");
+                Console.WriteLine("Enter the membership expiry date (yyyy-MM-dd):"); // enter date
                 DateTime StarDate = DateTime.Parse(Console.ReadLine());
 
-                Console.WriteLine("Enter the number of valid membership days:");
+                Console.WriteLine("Enter the number of valid membership days:"); //enter days then it will be expierd
 
                 int validDays = Convert.ToInt32(Console.ReadLine());
 
@@ -154,7 +154,28 @@
             {
                 Console.WriteLine("Invalid input.");
             }
+            */
+            //////////////////////////////////////////////////////////////////////////////////
+
+            //Task 9 - Round Up / Round Down Explorer
+
+            Console.WriteLine("Enter a decimal number:");
+            double decimalNumber = Convert.ToDouble(Console.ReadLine());
+
+            double neares = Math.Round(decimalNumber);
+            double roundUp = Math.Ceiling(decimalNumber); // round up to the nearest whole number
+            double roundDown = Math.Floor(decimalNumber); // round down to the nearest whole number
+
+            Console.WriteLine("Nearest whole number: " + neares);
+            Console.WriteLine("Rounded up: " + roundUp);
+            Console.WriteLine("Rounded down: " + roundDown);
+
+
+
+            //////////////////////////////////////////////////////////////////////
+            ///
+
+        }
     }
-}
 }
 
