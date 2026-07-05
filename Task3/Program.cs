@@ -251,14 +251,15 @@ Last occurrence of the word is at index: 16
                 Console.WriteLine("Enter you birth Date ");
                 DateTime DofB = DateTime.Parse(Console.ReadLine());
 
-                DateTime today = DateTime.Today;
-                int age = today.Year - DofB.Year;
+                DateTime today = DateTime.Today;  //get today date
+                int age = today.Year - DofB.Year; // calculate age
 
-                if (today.Month < DofB.Month || (today.Month == DofB.Month && today.Day < DofB.Day))
+                if (today.Month < DofB.Month || (today.Month == DofB.Month && today.Day < DofB.Day)) // check if your bd didint come yet this year
                 {
-                    age = age - 1;
+                    age = age - 1; //adjust the age if bd didnt come yet
                 }
-                DayOfWeek DayOfBirth = DofB.DayOfWeek;
+                DayOfWeek DayOfBirth = DofB.DayOfWeek; // get the weekday of bd
+                //print
                 Console.WriteLine("Age:" + age);
                 Console.WriteLine("Born on:"+ DayOfBirth);
             }
