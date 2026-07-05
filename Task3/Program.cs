@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            /*
             // Task 1 - Absolute Difference
             
             Console.WriteLine("Enter the first number:");
@@ -17,6 +18,23 @@
             double absoluteDifference = Math.Abs(subtraction);
 
             Console.WriteLine("The absolute difference is : " + absoluteDifference);
+
+            ///////////////////////////////////////////////////////////////////////////
+            */
+            // Task 2 - Power & Root Explorer
+
+            Console.WriteLine("Enter a number:");
+            double number = Convert.ToInt32(Console.ReadLine());
+
+            double power2 = Math.Pow(number, 2);
+            double squareRoot = Math.Sqrt(number);
+
+            Console.WriteLine("The number raised to the power of 2 is: " + power2);
+            Console.WriteLine("The square root of the number is: " + squareRoot);
+
+            ////////////////////////////////////////////////////////////////////////////
+
+
         }
     }
 }
