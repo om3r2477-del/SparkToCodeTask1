@@ -195,7 +195,7 @@
             {
                 Console.WriteLine("The word was not found in the sentence.");
             }
-            */
+            
             /*
              Enter a sentence:
 omar my name is omar
@@ -207,7 +207,7 @@ Last occurrence of the word is at index: 16
             ///////////////////////////////////////////////////////////////////
 
             //Task 11 - One-Time Password (OTP) Generator
-
+            /*
             Random random = new Random();
             int otp = random.Next(1000, 10000);
 
@@ -239,7 +239,36 @@ Last occurrence of the word is at index: 16
                 attempted++;
             }
             Console.WriteLine("verified failed");
+
+            */
+
+            ////////////////////////////////////////////////////////////////////////////
+
+
+            //Task 12 - Birthday Insights
+            try
+            {
+                Console.WriteLine("Enter you birth Date ");
+                DateTime DofB = DateTime.Parse(Console.ReadLine());
+
+                DateTime today = DateTime.Today;
+                int age = today.Year - DofB.Year;
+
+                if (today.Month < DofB.Month || (today.Month == DofB.Month && today.Day < DofB.Day))
+                {
+                    age = age - 1;
+                }
+                DayOfWeek DayOfBirth = DofB.DayOfWeek;
+                Console.WriteLine("Age:" + age);
+                Console.WriteLine("Born on:"+ DayOfBirth);
+            }
+            catch
+            {
+                Console.WriteLine("invalid format");
+            }
         }
+
+
     }
 
     }
