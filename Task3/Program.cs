@@ -47,14 +47,36 @@
 
 
             // Task 4 - Subscription End Date
-            */
+            
 
             Console.WriteLine("Enter the number of days of a free trial :");
             int freeTrialDays = Convert.ToInt32(Console.ReadLine());
 
             DateTime today = DateTime.Today;
             DateTime endDate = today.AddDays(freeTrialDays);
-            Console.WriteLine("The freeTrialDays : " + endDate.ToString("yyyy-MM-dd")); // so here i have to use uppercase MM to show th month
+            Console.WriteLine("The freeTrialDays : " + endDate.ToString("yyyy-MM-dd")); // so here i have to use uppercase MM to show the month
+            /////////////////////////////////////////////////////////////////////////////
+            
+            */
+            // Task 5 - Grade Rounding System
+
+            Console.WriteLine("Enter your Exam Score:");
+            double examScore = Convert.ToDouble(Console.ReadLine());
+
+            double roundedScore = Math.Round(examScore, 0); // here used 0 to round it to nearest whole number
+
+            Console.WriteLine("Rounded Score: " + roundedScore);
+
+            if(roundedScore >= 60) { 
+                Console.WriteLine("You passed the exam.");
+        }
+            else
+            {
+                Console.WriteLine("You failed the exam.");
+
+            
+
         }
     }
+}
 }
