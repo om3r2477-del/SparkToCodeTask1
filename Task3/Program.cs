@@ -20,7 +20,7 @@
             Console.WriteLine("The absolute difference is : " + absoluteDifference);
 
             ///////////////////////////////////////////////////////////////////////////
-            */
+            
             // Task 2 - Power & Root Explorer
 
             Console.WriteLine("Enter a number:");
@@ -33,8 +33,15 @@
             Console.WriteLine("The square root of the number is: " + squareRoot);
 
             ////////////////////////////////////////////////////////////////////////////
+            */
+            //Task 3 - Name Formatter
 
+            Console.WriteLine("Enter your full name:");
+            string fullName = Console.ReadLine();
 
+            Console.WriteLine(" your name in upper case: " + fullName.ToUpper());
+            Console.WriteLine(" your name in lower case: " + fullName.ToLower());
+            Console.WriteLine("number of Characters" + fullName.Length);
         }
     }
 }
