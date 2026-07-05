@@ -102,7 +102,7 @@
 
             //////////////////////////////////////////////////////////////////////////////////
 
-            */
+            
 
             //Task 7 - Clean Name Comparator
 
@@ -123,7 +123,38 @@
             {
                 Console.WriteLine("no Match.");
             }
-        }
+            //////////////////////////////////////////////////////////////////////////////
+
+            //Task 8 - Membership Expiry Checker
+
+            */
+            try
+            {
+                Console.WriteLine("Enter the membership expiry date (yyyy-MM-dd):");
+                DateTime StarDate = DateTime.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter the number of valid membership days:");
+
+                int validDays = Convert.ToInt32(Console.ReadLine());
+
+                DateTime expiryDate = StarDate.AddDays(validDays);
+
+                Console.WriteLine("The Expiry Date of membership: " + expiryDate.ToString("yyyy-MM-dd"));
+
+                if (expiryDate >= DateTime.Today)
+                {
+                    Console.WriteLine("Active.");
+                }
+                else
+                {
+                    Console.WriteLine("expired.");
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input.");
+            }
     }
+}
 }
 
