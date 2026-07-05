@@ -75,7 +75,7 @@
                 Console.WriteLine("You failed the exam.");
                 /////////////////////////////////////////////////////////////////
                
-                */
+                
                 // Task 6 - Password Strength Checker
 
 
@@ -99,9 +99,31 @@
                 {
                     Console.WriteLine("Password should not contain the word 'password'.");
                 }
-            
 
+            //////////////////////////////////////////////////////////////////////////////////
+
+            */
+
+            //Task 7 - Clean Name Comparator
+
+            Console.WriteLine("Enter the first name:");
+            string firstName = Console.ReadLine();
+
+            Console.WriteLine("Enter the second name:");
+            string secondName = Console.ReadLine();
+
+            firstName = firstName.Trim().ToLower(); // i used lower to make it case-insensitive
+            secondName = secondName.Trim().ToLower();      // i used Trim to remove any extra whitespace 
+
+            if (firstName == secondName)
+            {
+                Console.WriteLine("Match.");
+            }
+            else
+            {
+                Console.WriteLine("no Match.");
+            }
         }
-        }
+    }
 }
 
