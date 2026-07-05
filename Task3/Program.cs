@@ -171,7 +171,7 @@
             Console.WriteLine("Rounded down: " + roundDown);
 
 
-            */
+            
             //////////////////////////////////////////////////////////////////////
 
 
@@ -195,6 +195,7 @@
             {
                 Console.WriteLine("The word was not found in the sentence.");
             }
+            */
             /*
              Enter a sentence:
 omar my name is omar
@@ -203,8 +204,42 @@ omar
 First occurrence of the word is at index: 0
 Last occurrence of the word is at index: 16
              */
+            ///////////////////////////////////////////////////////////////////
 
+            //Task 11 - One-Time Password (OTP) Generator
+
+            Random random = new Random();
+            int otp = random.Next(1000, 10000);
+
+            Console.WriteLine("Otp has been sent:" + otp); // this line sent me an otp number
+
+            int attempted = 0;
+
+            while (attempted < 3)
+            {
+                try
+                {
+                    Console.WriteLine("Enter OTP");
+                    int userInput = Convert.ToInt32(Console.ReadLine()); // i have to enter the number that they sent me.
+
+                    if (userInput == otp)
+                    {
+                        Console.WriteLine("Verifide");
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorecct code.");
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("invalid input");
+                }
+                attempted++;
+            }
+            Console.WriteLine("verified failed");
         }
     }
-}
 
+    }
