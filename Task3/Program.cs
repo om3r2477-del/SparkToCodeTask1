@@ -154,7 +154,7 @@
             {
                 Console.WriteLine("Invalid input.");
             }
-            */
+            
             //////////////////////////////////////////////////////////////////////////////////
 
             //Task 9 - Round Up / Round Down Explorer
@@ -171,9 +171,38 @@
             Console.WriteLine("Rounded down: " + roundDown);
 
 
-
+            */
             //////////////////////////////////////////////////////////////////////
-            ///
+
+
+            // Task 10 - Word Position Finder
+
+            Console.WriteLine("Enter a sentence:");
+            string sentence = Console.ReadLine();
+
+            Console.WriteLine("Enter a word:");
+            string word = Console.ReadLine();
+
+            int firstIndex = sentence.IndexOf(word);
+            int lastIndex = sentence.LastIndexOf(word);
+
+            if (firstIndex != -1) // (!= not equal) (-1 means the word was found in the sentence)
+            {
+                Console.WriteLine("First occurrence of the word is at index: " + firstIndex); // output ex: my name is omar index:11 first and last occurance
+                Console.WriteLine("Last occurrence of the word is at index: " + lastIndex);
+            }
+            else
+            {
+                Console.WriteLine("The word was not found in the sentence.");
+            }
+            /*
+             Enter a sentence:
+omar my name is omar
+Enter a word:
+omar
+First occurrence of the word is at index: 0
+Last occurrence of the word is at index: 16
+             */
 
         }
     }
