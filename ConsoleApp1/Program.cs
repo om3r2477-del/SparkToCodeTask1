@@ -59,6 +59,13 @@
             Console.WriteLine("Area" + area);
             Console.WriteLine("Parameter" + parameter);
 
+            //task 7
+
+            Console.WriteLine("Enter score :");
+            int score = Convert.ToInt32(Console.ReadLine());
+
+            string greade = GetGradeLetter(score);
+            Console.WriteLine("greade :" + greade);
         }
 
         
@@ -114,7 +121,32 @@
             return 2 * length * width;
         }
 
+        //////////////////////////////////////////////////////////////////
 
-    }
+        //Task 7 - Grade Letter Function
+
+        public static string GetGradeLetter(double score)
+        {
+            if(score >= 90)
+            {
+                return "A";
+            }
+            else if (score >= 80)
+            {
+                return "B";
+            }
+            else if (score >= 70) { 
+            return "C";
+            }
+            else if(score >= 60)
+            {
+                return "D";
+            }
+            else
+            {
+                return "F";
+            }
+        }
+}
 }
 
