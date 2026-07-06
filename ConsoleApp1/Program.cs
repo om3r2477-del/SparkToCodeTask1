@@ -72,6 +72,19 @@
             Console.WriteLine("Enter starting number:");
             int snumber = Convert.ToInt32(Console.ReadLine());
             Countdown(snumber);
+
+            //task 9
+
+            int res1 = Multiply(2, 3);
+            Console.WriteLine("Multiply int1,int2:" + res1);
+
+            double res2 = Multiply(2.3, 3.4);
+            Console.WriteLine("Multiply double1,double2:" + res2);
+
+            int res3 = Multiply(2, 3,4);
+            Console.WriteLine("Multiply int1,int2,int3:" + res3);
+
+
         }
 
         
@@ -163,6 +176,25 @@
             Console.WriteLine(i);
             }
         }
+        ////////////////////////////////////////////////////////////////////////////////
+
+        //Task 9 - Overloaded Multiply Function
+
+        public static int Multiply(int a, int b)
+        {
+           return a * b;
+        }
+
+        public static double Multiply(double a, double b)
+        {
+            return a * b;
+        }
+
+        public static int Multiply(int a, int b, int c)
+        {
+            return a * b * c;
+        }
+
 
     }
 }
