@@ -66,6 +66,12 @@
 
             string greade = GetGradeLetter(score);
             Console.WriteLine("greade :" + greade);
+
+            //task 8 
+
+            Console.WriteLine("Enter starting number:");
+            int snumber = Convert.ToInt32(Console.ReadLine());
+            Countdown(snumber);
         }
 
         
@@ -147,6 +153,18 @@
                 return "F";
             }
         }
+        ///////////////////////////////////////////////////////////////////////////
+
+        //Task 8 - Countdown Function
+
+        public static void Countdown(int snumber)
+        {
+            for (int i = snumber; i >= 1; i--) { 
+            Console.WriteLine(i);
+            }
+        }
+
+    }
 }
-}
+
 
