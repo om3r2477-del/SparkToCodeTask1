@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp1
+﻿using System.Drawing;
+
+namespace ConsoleApp1
 {
     internal class Program
     {
@@ -84,10 +86,34 @@
             int res3 = Multiply(2, 3,4);
             Console.WriteLine("Multiply int1,int2,int3:" + res3);
 
+            // task 10
 
+            Console.WriteLine(" choose 1)shape 2) squre 3) rectangle");
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            if (choice == 1)
+            {
+                Console.WriteLine("Enter side:");
+                double side = Convert.ToDouble(Console.ReadLine());
+
+                double area2 = CalculateArea2(side);
+                Console.WriteLine("area" + area2);
+            }
+            else if (choice == 2)
+            {
+                Console.WriteLine("Enter length:");
+                double length2 = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Enter width:");
+                double width2 = Convert.ToDouble(Console.ReadLine());
+                double area2 = CalculateArea2(length2, width2);
+                Console.WriteLine("area" + area2);
+
+            }
         }
-
         
+
+
 
         public static void printWelcome(string name)
         {
@@ -194,6 +220,19 @@
         {
             return a * b * c;
         }
+
+        //Task 10 - Overloaded Area Calculator
+
+        public static double CalculateArea2(double side)
+        {
+            return side * side;
+        }
+
+        public static double CalculateArea2(double length2 , double width2)
+        {
+            return length2 * width2;
+        }
+
 
 
     }
