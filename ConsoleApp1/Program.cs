@@ -183,8 +183,30 @@ namespace ConsoleApp1
                     Console.WriteLine();
                 }
 
+                // task 12 
+
+                Console.WriteLine("Enter student name:");
+                string name3 = Console.ReadLine();
+
+                Console.WriteLine("Enter score 1:");
+                int score1 = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Enter score 2:");
+                int score2 = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Enter score 3:");
+                int score3 = Convert.ToInt32(Console.ReadLine());
+
+
+                double avrage = CalclateAvg(score1, score2, score3);
+
+                string ggrade = Getgreadeletter(avrage);
+
+                printReportCard(name3, avrage, ggrade);
             }
+
         }
+        
 
 
 
@@ -358,6 +380,43 @@ namespace ConsoleApp1
         //////////////////////////////////////
 
         //Task 12 - Student Report Card Generator
-    }
-}
 
+        public static double CalclateAvg(double score1, double score2, double score3)
+        {
+            return (score1 + score2 + score3) / 3;
+        }
+
+        public static string Getgreadeletter(double avrage)
+        {
+            if (avrage >= 90)
+            {
+                return "A";
+            }
+            else if (avrage >= 80)
+            {
+                return "B";
+            }
+            else if (avrage >= 70)
+            {
+                return "C";
+            }
+            else if (avrage >= 60)
+            {
+                return "D";
+            }
+            else
+            {
+                return "F";
+            }
+        }
+        public static void printReportCard(string name3, double avrage, string ggrade)
+        {
+            Console.WriteLine("\n Report Card ");
+            Console.WriteLine("Student Name: " + name3);
+            Console.WriteLine("Average Score: " + avrage);
+            Console.WriteLine("Grade Letter: " + ggrade);
+            Console.WriteLine("=======================");
+        }
+    }
+
+}
