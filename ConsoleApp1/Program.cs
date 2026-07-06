@@ -39,7 +39,7 @@ namespace ConsoleApp1
 
             bool res = isEven(num);
 
-            if(res)
+            if (res)
             {
                 Console.WriteLine("Even");
             }
@@ -83,7 +83,7 @@ namespace ConsoleApp1
             double res2 = Multiply(2.3, 3.4);
             Console.WriteLine("Multiply double1,double2:" + res2);
 
-            int res3 = Multiply(2, 3,4);
+            int res3 = Multiply(2, 3, 4);
             Console.WriteLine("Multiply int1,int2,int3:" + res3);
 
             // task 10
@@ -109,9 +109,84 @@ namespace ConsoleApp1
                 double area2 = CalculateArea2(length2, width2);
                 Console.WriteLine("area" + area2);
 
+                // task 11
+
+                int choicee = 0;
+
+                while (choicee != 5)
+                {
+                    Console.WriteLine("calculation:");
+                    Console.WriteLine("1) Add:");
+                    Console.WriteLine("2) subtract:");
+                    Console.WriteLine("3) multiply:");
+                    Console.WriteLine("4) divide:");
+                    Console.WriteLine("5) exit :");
+                    Console.WriteLine("Enter your choice:");
+
+                    int coicee = Convert.ToInt32(Console.ReadLine());
+
+                    switch (coicee)
+                    {
+                        case 1:
+                            Console.WriteLine("Enter first number :");
+                            double AddNumber1 = Convert.ToDouble(Console.ReadLine());
+
+                            Console.WriteLine("Enter second number :");
+                            double AddNumber2 = Convert.ToDouble(Console.ReadLine());
+
+                            displayresult("Addititon", Add(AddNumber1, AddNumber2));
+
+                            break;
+
+                        case 2:
+                            Console.WriteLine("Enter first number :");
+                            double subNumber1 = Convert.ToDouble(Console.ReadLine());
+
+                            Console.WriteLine("Enter second number :");
+                            double subNumber2 = Convert.ToDouble(Console.ReadLine());
+
+                            displayresult("subtraction", Subtract(subNumber1, subNumber2));
+
+                            break;
+
+                        case 3:
+                            Console.WriteLine("Enter first number :");
+                            double mulNumber1 = Convert.ToDouble(Console.ReadLine());
+
+                            Console.WriteLine("Enter second number :");
+                            double mulNumber2 = Convert.ToDouble(Console.ReadLine());
+
+                            displayresult("multiplacation", multiplyy(mulNumber1, mulNumber2));
+
+                            break;
+
+                        case 4:
+                            Console.WriteLine("Enter first number :");
+                            double divNumber1 = Convert.ToDouble(Console.ReadLine());
+
+                            Console.WriteLine("Enter second number :");
+                            double divNumber2 = Convert.ToDouble(Console.ReadLine());
+
+                            displayresult("divition", divition(divNumber1, divNumber2));
+
+                            break;
+
+                        case 5:
+                            Console.WriteLine("Thank you ");
+
+                            break;
+                        default:
+                            Console.WriteLine("invlid coice");
+                            break;
+
+                    }
+                    Console.WriteLine();
+                }
+
             }
         }
-        
+
+
 
 
 
@@ -156,12 +231,12 @@ namespace ConsoleApp1
 
         //Task 6 - Rectangle Area & Perimeter Functions
 
-        public static double CalculateArea(double length,double width)
+        public static double CalculateArea(double length, double width)
         {
             return length * width;
         }
 
-        public static double CalculatePerimeter(double length,double width)
+        public static double CalculatePerimeter(double length, double width)
         {
             return 2 * length * width;
         }
@@ -172,7 +247,7 @@ namespace ConsoleApp1
 
         public static string GetGradeLetter(double score)
         {
-            if(score >= 90)
+            if (score >= 90)
             {
                 return "A";
             }
@@ -180,10 +255,11 @@ namespace ConsoleApp1
             {
                 return "B";
             }
-            else if (score >= 70) { 
-            return "C";
+            else if (score >= 70)
+            {
+                return "C";
             }
-            else if(score >= 60)
+            else if (score >= 60)
             {
                 return "D";
             }
@@ -198,8 +274,9 @@ namespace ConsoleApp1
 
         public static void Countdown(int snumber)
         {
-            for (int i = snumber; i >= 1; i--) { 
-            Console.WriteLine(i);
+            for (int i = snumber; i >= 1; i--)
+            {
+                Console.WriteLine(i);
             }
         }
         ////////////////////////////////////////////////////////////////////////////////
@@ -208,7 +285,7 @@ namespace ConsoleApp1
 
         public static int Multiply(int a, int b)
         {
-           return a * b;
+            return a * b;
         }
 
         public static double Multiply(double a, double b)
@@ -228,14 +305,59 @@ namespace ConsoleApp1
             return side * side;
         }
 
-        public static double CalculateArea2(double length2 , double width2)
+        public static double CalculateArea2(double length2, double width2)
         {
             return length2 * width2;
         }
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
 
+        // Task 11 - Function-Based Calculator
 
+        public static double Add(double AddNumber1, double AddNumber2)
+        {
+            return AddNumber1 + AddNumber2;
+        }
+
+        public static double Subtract(double subNumber1, double subNumber2)
+        {
+            return subNumber1 - subNumber2;
+        }
+
+        public static double multiplyy(double mulNumber1, double mulNumber2)
+        {
+            return mulNumber1 * mulNumber2;
+        }
+
+        public static double divition(double num1, double num2)
+        {
+            try
+            {
+                if (num2 == 0)
+                {
+                    throw new DivideByZeroException();
+                }
+
+                return num1 / num2;
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Error: Cannot divide by zero.");
+                return 0;
+            }
+        }
+
+        public static void displayresult(string operation, double result)
+        {
+            Console.WriteLine(" Result: ");
+            Console.WriteLine("Operation: " + operation);
+            Console.WriteLine("Result: " + result);
+            Console.WriteLine("------------------");
+        }
+
+        //////////////////////////////////////
+
+        //Task 12 - Student Report Card Generator
     }
 }
-
 
