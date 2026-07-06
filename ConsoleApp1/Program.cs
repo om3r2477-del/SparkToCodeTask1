@@ -30,6 +30,22 @@
 
             //Task 4
             displayMnue();
+
+            //Task 5
+            Console.WriteLine("Entar a number :");
+            int num = Convert.ToInt32(Console.ReadLine());
+
+            bool res = isEven(num);
+
+            if(res)
+            {
+                Console.WriteLine("Even");
+            }
+            else
+            {
+                Console.WriteLine("odd");
+            }
+            //task 6
         }
 
         
@@ -64,6 +80,13 @@
             Console.WriteLine("2) Help");
             Console.WriteLine("3) Exit");
         }
-    }
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        //Task 5 - Even or Odd Function
+        public static bool isEven(int num)
+        {
+            return num % 2 == 0;
+        }
+}
 }
 
