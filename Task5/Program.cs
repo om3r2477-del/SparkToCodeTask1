@@ -141,7 +141,7 @@
                 Console.WriteLine(shopingItem);
             }
             ///////////////////////////////////////////////////////////////////////////////////
-            */
+            
             //Task 7 - High Score Podium
 
             List<int> scores = new List<int>();
@@ -159,6 +159,37 @@
             Console.WriteLine("First place :" + scores[0]);
             Console.WriteLine("second place :" + scores[1]);
             Console.WriteLine("therd place :" + scores[2]);
+            ///////////////////////////////////////////////////////////////////////////////////////
+
+            */
+            // Task 8 - Undo Last Action 
+
+            Stack<string> actions = new Stack<string>();
+
+            string  action = "";
+
+            while(action != "stop")
+            {
+                Console.WriteLine("Enter an action or type (stop)");
+                action = Console.ReadLine();
+
+                if(action != "stop")
+                {
+                    actions.Push(action);
+                }
+            }
+
+            Console.WriteLine("undo the actions:");
+
+            Console.WriteLine("undone :" + actions.Pop());
+            Console.WriteLine("undone :" + actions.Pop());
+
+            Console.WriteLine("rename actions:");
+
+            foreach(string renameaction in actions)
+            {
+                Console.WriteLine(renameaction);
+            }
         }
     }
 }
