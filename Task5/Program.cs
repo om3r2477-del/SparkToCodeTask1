@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-
+            /*
             // Task 1 - Fixed Grades Array
 
             int[]  greads = new int[5];
@@ -100,6 +100,46 @@
             Console.WriteLine("the highst grade:" + greadss[greadss.Length - 1]);
             Console.WriteLine("the lowest:" + greadss[0]);
             Console.WriteLine("the avrage:" + avrage);
+
+            //////////////////////////////////////////////////////////////////////////////
+            */
+            //Task 6 - Filtered Shopping List
+
+
+            List<string> shopingList = new List<string>();
+
+            string item = "";
+            while(item != "done")
+            {
+                Console.WriteLine("Enter an item or type done:");
+                 item = Console.ReadLine();
+
+                if(item != "done")
+                {
+                    shopingList.Add(item);
+                }
+                
+            }
+
+            Console.WriteLine("Shopping list before removing:");
+
+            foreach(string shopingItem in shopingList)
+            {
+                Console.WriteLine(shopingItem);
+
+            }
+
+            Console.WriteLine("Enter n item to remove:");
+            string remooveitem = Console.ReadLine();
+
+            shopingList.Remove(remooveitem);
+
+            Console.WriteLine("shoping list after remove");
+
+            foreach(string shopingItem in shopingList)
+            {
+                Console.WriteLine(shopingItem);
+            }
         }
     }
 }
