@@ -32,14 +32,33 @@
                 Console.WriteLine("Enter tsak"+( i + 1)+":");
                 tasks.Add(Console.ReadLine());
                 }
-
+            Console.WriteLine("List needs to be done:");
             int number = 1;
             foreach (string task in tasks)
             {
                 Console.WriteLine(number + "." + task);
                 number++;
             }
-       
+
+            ////////////////////////////////////////////////////////////////////////
+
+            //Task 3 - Browsing History Stack
+
+            Stack<string> history = new Stack< string > ();
+
+            for (int i = 0; i < 3; i++) {
+
+                Console.WriteLine("Enter website Url" + (i + 1) + ":");
+                history.Push(Console.ReadLine());
+            
+            }
+
+            history.Pop();
+
+            Console.WriteLine(" after passing back button once");
+            Console.WriteLine("You are now on:" + history.Peek());
+
+        }
     }
-}
-}
+    }
+
