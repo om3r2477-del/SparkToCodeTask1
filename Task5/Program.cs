@@ -102,7 +102,7 @@
             Console.WriteLine("the avrage:" + avrage);
 
             //////////////////////////////////////////////////////////////////////////////
-            */
+            
             //Task 6 - Filtered Shopping List
 
 
@@ -140,6 +140,25 @@
             {
                 Console.WriteLine(shopingItem);
             }
+            ///////////////////////////////////////////////////////////////////////////////////
+            */
+            //Task 7 - High Score Podium
+
+            List<int> scores = new List<int>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Enter game score" + (i + 1) + ":");
+                scores.Add(Convert.ToInt32(Console.ReadLine));
+
+
+            }
+            scores.Sort();
+            scores.Reverse();
+
+            Console.WriteLine("First place :" + scores[0]);
+            Console.WriteLine("second place :" + scores[1]);
+            Console.WriteLine("therd place :" + scores[2]);
         }
     }
 }
