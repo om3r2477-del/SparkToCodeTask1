@@ -74,7 +74,33 @@
             }
             string serveCustomer = customer.Dequeue();
             Console.WriteLine("customers served:"+ serveCustomer);
+
+            ///////////////////////////////////////////////////////////////////////////////////////
+
+            //Task 5 - Array Grade Range
+
+            int[] greadss = new int[5];
+
+            for(int i = 0; i < greadss.Length; i++)
+            {
+                Console.WriteLine("Enter grade" + (i + 1) + ":");
+                greadss[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            Array.Sort(greadss);
+
+            int total = 0;
+            for(int i = 0; i < greadss.Length; i++)
+                {
+                total += greadss[i];
+
+            }
+            double avrage = (double)total / greadss.Length;
+
+            Console.WriteLine("the highst grade:" + greadss[greadss.Length - 1]);
+            Console.WriteLine("the lowest:" + greadss[0]);
+            Console.WriteLine("the avrage:" + avrage);
         }
     }
-    }
+}
 
