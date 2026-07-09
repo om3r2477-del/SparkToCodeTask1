@@ -288,3 +288,20 @@
             balances[ReceiveIndex] += amount;
             Console.WriteLine("Transfer successful.");
         }
+        // serves 6 ListAllAccounts or custome servie 1
+
+        static void ListAllAccounts()
+        {
+            Console.WriteLine("...ListAllAccounts...");
+
+            if (accountNumbers.Count == 0) {
+                Console.WriteLine("their is no accounts avalibe");
+                return;
+            }
+            for (int i = 0; i < accountNumbers.Count; i++)
+            {
+                Console.WriteLine("name:" + customerNames[i]);
+                Console.WriteLine("account:" + accountNumbers[i]);
+                Console.WriteLine("Balance:" + balances[i]);
+            }
+        }
