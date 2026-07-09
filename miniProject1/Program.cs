@@ -212,7 +212,29 @@
             Console.WriteLine("Withdrawal successful.");
             Console.WriteLine("Balance: " + balances[index]);
         }
+        //Service 4 - Show Balance
+        static void ShowBalance()
+        {
+            Console.Write("...ShowBalance...: ");
+            Console.Write("Enter account number: ");
+            string accountNumber = Console.ReadLine();
 
 
+            int index = accountNumbers.IndexOf(accountNumber);
+
+
+            if (index == -1)
+            {
+                Console.WriteLine("Account not found.");
+                return;
+            }
+
+
+            Console.WriteLine("\nCustomer: " + customerNames[index]);
+            Console.WriteLine("Account Number: " + accountNumbers[index]);
+            Console.WriteLine("Balance: " + balances[index]);
+        }
+
+    }
 
 
