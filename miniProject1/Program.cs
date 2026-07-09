@@ -62,7 +62,7 @@
                         break;
                     case 8:
                         exitApp = true;
-                        Console.WriteLine("Thank you for banking with Spark Bank.");
+                        Console.WriteLine("Thank you for banking with Spark Bank Goodbye.");
                         break;
                     default:
                         Console.WriteLine("Invalid option.");
@@ -129,7 +129,7 @@
             string accountNumber = Console.ReadLine();
 
 
-            int index = accountNumber.IndexOf(accountNumber);
+            int index = accountNumbers.IndexOf(accountNumber);
 
             if (index == -1)
             {
@@ -325,10 +325,12 @@
 
             for (int i = 0; i < balances.Count; i++)
             {
-                balances[i] *= balances[i] * intrest / 100;
+                balances[i] += balances[i] * intrest / 100;
 
                 Console.WriteLine("intrest applied");
             }
         }
     }
 }
+// Used List collections to store customer names, account numbers, and balances.
+// Used Add(), Contains(), IndexOf(), Count, and for loops to manage account data.
