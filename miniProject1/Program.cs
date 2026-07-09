@@ -127,7 +127,7 @@
 
             int index = accountNumber.IndexOf(accountNumber);
 
-            if(index == -1)
+            if (index == -1)
             {
                 Console.WriteLine("Account not found");
                 return;
@@ -142,7 +142,7 @@
 
                 // to make sure that amount is positive
 
-                if(amount <= 0)
+                if (amount <= 0)
                 {
                     Console.WriteLine("amount has to be Posititve");
                     return;
@@ -163,13 +163,13 @@
         }
         ////////////////////////
 
-//Service 3 - Withdraw Money
+        //Service 3 - Withdraw Money
 
         static void WithdrawMoney()
 
         {
             Console.Write("...WithdrawMoney...: ");
-            
+
             Console.Write("Enter account number: ");
             string accountNumber = Console.ReadLine();
 
@@ -250,7 +250,8 @@
             int ReceiveIndex = accountNumbers.IndexOf(Receive);
 
             // check if the account number is exist or not
-            if (sendIndex == -1 || ReceiveIndex == -1) {
+            if (sendIndex == -1 || ReceiveIndex == -1)
+            {
                 Console.WriteLine("Account dose not exist");
                 return;
             }
@@ -289,12 +290,14 @@
             Console.WriteLine("Transfer successful.");
         }
         // serves 6 ListAllAccounts or custome servie 1
-
+        //Service 6 - List All Accounts
+       // Purpose: Show all customers with their account numbers and balances.
         static void ListAllAccounts()
         {
             Console.WriteLine("...ListAllAccounts...");
 
-            if (accountNumbers.Count == 0) {
+            if (accountNumbers.Count == 0)
+            {
                 Console.WriteLine("their is no accounts avalibe");
                 return;
             }
@@ -305,3 +308,21 @@
                 Console.WriteLine("Balance:" + balances[i]);
             }
         }
+        // serves 7 or custome servie 2 ApplyInterest
+        //Service 7 - Apply Interest
+        //Purpose: Add 5% interest to every account balance.
+        static void ApplyInterest()
+        {
+            Console.WriteLine("...ApplyInterest...");
+
+            double intrest = 5;
+
+            for (int i = 0; i < balances.Count; i++)
+            {
+                balances[i] *= balances[i] * intrest / 100;
+
+                Console.WriteLine("intrest applied");
+            }
+        }
+    }
+}
