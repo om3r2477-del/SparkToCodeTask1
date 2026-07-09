@@ -154,7 +154,7 @@
                 return;
             }
             // for updating the balance
-
+            //increase balance 
             balances[index] += amount;
 
 
@@ -206,6 +206,7 @@
                 Console.WriteLine("invalid amount");
                 return;
             }
+            // reomve amount from balance 
             balances[index] -= amount;
 
 
@@ -219,10 +220,10 @@
             Console.Write("Enter account number: ");
             string accountNumber = Console.ReadLine();
 
-
+            //to find accounts position
             int index = accountNumbers.IndexOf(accountNumber);
 
-
+            // check if account dose not exist
             if (index == -1)
             {
                 Console.WriteLine("Account not found.");
@@ -250,7 +251,7 @@
             int ReceiveIndex = accountNumbers.IndexOf(Receive);
 
             // check if the account number is exist or not
-            if (sendIndex == -1 || ReceiveIndex == -1)
+            if (sendIndex == -1 || ReceiveIndex == -1) // means not allowed to trnsfar
             {
                 Console.WriteLine("Account dose not exist");
                 return;
@@ -272,6 +273,7 @@
                     Console.WriteLine("Amount must be positive.");
                     return;
                 }
+                // check if enough money avalible
                 if (amount > balances[sendIndex])
                 {
                     Console.WriteLine("balnace is not enough");
@@ -314,8 +316,8 @@
         static void ApplyInterest()
         {
             Console.WriteLine("...ApplyInterest...");
-
-            double intrest = 5;
+            //for adding 5% inntrest
+            double intrest = 5; 
 
             for (int i = 0; i < balances.Count; i++)
             {
