@@ -234,7 +234,57 @@
             Console.WriteLine("Account Number: " + accountNumbers[index]);
             Console.WriteLine("Balance: " + balances[index]);
         }
+        //  Transfer Amount
 
-    }
+        static void TransferAmount()
+        {
+            Console.WriteLine("///Transfer Amount..."); //send and recve money
 
+            Console.WriteLine("send account number");
+            string send = Console.ReadLine();
 
+            Console.WriteLine("Receiv account number");
+            string Receive = Console.ReadLine();
+
+            int sendIndex = accountNumbers.IndexOf(send);
+            int ReceiveIndex = accountNumbers.IndexOf(Receive);
+
+            // check if the account number is exist or not
+            if (sendIndex == -1 || ReceiveIndex == -1) {
+                Console.WriteLine("Account dose not exist");
+                return;
+            }
+            if (sendIndex == ReceiveIndex)
+            {
+                Console.WriteLine("cant transfear to same account");
+                return;
+            }
+            double amount;
+
+            try
+            {
+                Console.WriteLine("Enter transfer amount: ");
+                amount = double.Parse(Console.ReadLine());
+
+                if (amount <= 0)
+                {
+                    Console.WriteLine("Amount must be positive.");
+                    return;
+                }
+                if (amount > balances[sendIndex])
+                {
+                    Console.WriteLine("balnace is not enough");
+                    return;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("invalid amount");
+                return;
+            }
+            // to update both balance 
+
+            balances[sendIndex] -= amount;
+            balances[ReceiveIndex] += amount;
+            Console.WriteLine("Transfer successful.");
+        }
