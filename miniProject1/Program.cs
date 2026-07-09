@@ -161,7 +161,57 @@
             Console.WriteLine("Deposit successful.");
             Console.WriteLine("Balance: " + balances[index]);
         }
+        ////////////////////////
 
+//Service 3 - Withdraw Money
+
+        static void WithdrawMoney()
+
+        {
+            Console.Write("...WithdrawMoney...: ");
+            
+            Console.Write("Enter account number: ");
+            string accountNumber = Console.ReadLine();
+
+            int index = accountNumbers.IndexOf(accountNumber);
+
+
+            if (index == -1)
+            {
+                Console.WriteLine("Account not found.");
+                return;
+            }
+            double amount;
+
+            try
+            {
+                Console.Write("Enter withdrawal amount: ");
+                amount = double.Parse(Console.ReadLine());
+
+                // check for withdrawal
+
+                if (amount <= 0)
+                {
+                    Console.WriteLine("Amount must be positive.");
+                    return;
+                }
+                if (amount > balances[index])
+                {
+                    Console.WriteLine("Balance too low");
+                    return;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("invalid amount");
+                return;
+            }
+            balances[index] -= amount;
+
+
+            Console.WriteLine("Withdrawal successful.");
+            Console.WriteLine("Balance: " + balances[index]);
+        }
 
 
 
