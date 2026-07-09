@@ -2,15 +2,18 @@
 {
     internal class Program
     {
+        //  store customer informations 
         static List<string> customerNames = new List<string>();
         static List<string> accountNumbers = new List<string>();
         static List<double> balances = new List<double>();
         static void Main(string[] args)
         {
+            // to keep the app running until user exit
             bool exitApp = false;
 
             while (!exitApp)
             {
+                //show menu
                 Console.WriteLine("\n===== Welcome to Spark Bank =====");
                 Console.WriteLine("1. Add New Account");
                 Console.WriteLine("2. Deposit Money");
@@ -25,13 +28,14 @@
                 int choice;
                 try
                 {
+                    // get user choice
                     choice = int.Parse(Console.ReadLine());
                 }
 
                 catch (Exception)
                 {
                     Console.WriteLine("Invalid input. Please enter a number from 1 to 8.");
-                    continue; // skip the rest of this loop pass, show the menu again
+                    continue; // skip the rest of the loop and show the menu again
                 }
                 switch (choice)
                 {
