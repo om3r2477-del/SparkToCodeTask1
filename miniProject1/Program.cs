@@ -116,7 +116,53 @@
 
             Console.WriteLine("Account created successfully.");
         }
+        static void DepositMoney()
+        {
+
+            Console.WriteLine("...........DepositMoney........");
+
+            Console.Write("Enter account number: ");
+            string accountNumber = Console.ReadLine();
+
+
+            int index = accountNumber.IndexOf(accountNumber);
+
+            if(index == -1)
+            {
+                Console.WriteLine("Account not found");
+                return;
+
+            }
+            double amount;
+
+            try
+            {
+                Console.Write("Enter deposit amount: ");
+                amount = double.Parse(Console.ReadLine());
+
+                // to make sure that amount is positive
+
+                if(amount <= 0)
+                {
+                    Console.WriteLine("amount has to be Posititve");
+                    return;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("invalid amount");
+                return;
+            }
+            // for updating the balance
+
+            balances[index] += amount;
+
+
+            Console.WriteLine("Deposit successful.");
+            Console.WriteLine("Balance: " + balances[index]);
+        }
 
 
 
-    }
+
+
