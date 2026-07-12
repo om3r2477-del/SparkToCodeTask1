@@ -105,6 +105,14 @@
     }
     internal class Program
     {
+        static BankAccount account1;
+        static BankAccount account2;
+
+        static student student1;
+        static student student2;
+
+        static Product prod1;
+        static Product prod2;
         static void Main(string[] args)
         {
             // BankAccount objects 
@@ -141,6 +149,114 @@
             prod2.ProductName = "laptop";
             prod2.Price = 121.5;
             prod2.StockQuantity = 20;
-        }
+
+            bool exitApp = false;
+            while (exitApp == false)
+            {
+                Console.WriteLine("\n===== OOP Part 1 - Bank / Student / Product Manager =====");
+                Console.WriteLine(" 1. View Account Details");
+                Console.WriteLine(" 2. Update Student Address");
+                Console.WriteLine(" 3. Make a Deposit");
+                Console.WriteLine(" 4. Make a Withdrawal");
+                Console.WriteLine(" 5. View Product Details");
+                Console.WriteLine(" 6. Register a Student");
+                Console.WriteLine(" 7. Compare Two Account Balances");
+                Console.WriteLine(" 8. Restock Product & Stock Level Check");
+                Console.WriteLine(" 9. Transfer Between Accounts");
+                Console.WriteLine("10. Update Student Grade (Validated)");
+                Console.WriteLine("11. Student Report Card");
+                Console.WriteLine("12. Account Health Status");
+                Console.WriteLine("13. Bulk Sale With Revenue Calculation");
+                Console.WriteLine("14. Scholarship Eligibility Check");
+                Console.WriteLine("15. Full Balance Top-Up Flow");
+                Console.WriteLine("20. Exit");
+
+                Console.WriteLine("chosse an option:");
+
+                int choice;
+
+                try
+                {
+                    choice = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("invalid input");
+                    continue;
+                }
+
+
+                switch (choice)
+                {
+                    case 1:
+                        ViewAccountDetails();
+                        break;
+
+                    case 2:
+                        UpdateStudentAddress();
+                        break;
+
+                    case 3:
+                        MakeDeposit();
+                        break;
+
+                    case 4:
+                        MakeWithdrawal();
+                        break;
+
+                    case 5:
+                        ViewProductDetails();
+                        break;
+
+                    case 6:
+                        RegisterStudent();
+                        break;
+
+                    case 7:
+                        CompareAccountBalances();
+                        break;
+
+                    case 8:
+                        RestockProduct();
+                        break;
+
+                    case 9:
+                        TransferBetweenAccounts();
+                        break;
+
+                    case 10:
+                        UpdateStudentGrade();
+                        break;
+
+                    case 11:
+                        StudentReportCard();
+                        break;
+
+                    case 12:
+                        AccountHealthStatus();
+                        break;
+
+                    case 13:
+                        BulkSaleWithRevenue();
+                        break;
+
+                    case 14:
+                        ScholarshipEligibilityCheck();
+                        break;
+
+                    case 15:
+                        FullBalanceTopUpFlow();
+                        break;
+
+                    case 20:
+                        exitApp = true;
+                        Console.WriteLine("Goodbye!");
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid option.");
+                        break;
+                }
+            }
     }
 }
