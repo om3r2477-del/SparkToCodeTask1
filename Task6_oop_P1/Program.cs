@@ -351,6 +351,42 @@
                 student2.Register(email);
             Console.WriteLine("student regustered");
         }
+        static void CompareAccountBalances()
+        {
+            if (account1.Balance > account2.Balance)
+                Console.WriteLine("Account 1 has more money.");
+            else if (account2.Balance > account1.Balance)
+                Console.WriteLine("Account 2 has more money.");
+            else
+                Console.WriteLine("Both accounts have the same balance.");
+        }
+        
+        static void RestockProduct()
+        {
+            Console.Write("Choose product 1 or 2 ");
+            int x = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter quantity: ");
+            int quantity = int.Parse(Console.ReadLine());
+
+            Product product;
+
+            if (x == 1)
+                product = prod1;
+            else
+                product = prod2;
+
+            product.Restock(quantity);
+
+            if (product.StockQuantity < 10)
+                Console.WriteLine("Low");
+            else if (product.StockQuantity <= 49)
+                Console.WriteLine("Moderate");
+            else
+                Console.WriteLine("Well Stocked");
+        }
     }
+
     }
+}
 }
