@@ -10,14 +10,14 @@
     public void Deposit(double amount)
         {
             Balance += amount;
-            sendEmail();
+            SendEmail();
         }
      public void Withdraw(double amount)
         {
             if(Balance >= amount)
             {
                 Balance -= amount;
-                sendEmail();
+                SendEmail();
             }
             else
             {
@@ -37,6 +37,28 @@
     private void SendEmail()
         {
             Console.WriteLine("Email sent");
+        }
+    }
+
+    //class Student
+
+    class student
+    {
+        public int Grade;
+        public string name;
+        public string Address;
+
+        private string email;
+        int age;
+
+        public void Register(string Email)
+        {
+            email = Email;
+            SendEmail();
+        }
+        private void SendEmail()
+        {
+            Console.WriteLine("regestrations email is sent");
         }
     }
 
