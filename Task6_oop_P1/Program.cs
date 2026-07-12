@@ -263,15 +263,15 @@
             {
                 Console.WriteLine(" chosse  account 1 or 2:");
                 int x = int.Parse(Console.ReadLine());
-                if(x == 1)
-                
+                if (x == 1)
+
                     account1.CheckBalance();
-                
+
                 else
-                
+
                     account2.CheckBalance();
-                }
-                static void UpdateStudentAddress()
+            }
+            static void UpdateStudentAddress()
             {
                 Console.WriteLine(" chosse student 1 or 2:");
                 int x = int.Parse(Console.ReadLine());
@@ -279,20 +279,42 @@
                 Console.WriteLine(" Enter the address:");
                 string address = Console.ReadLine();
 
-                if (x == 1) 
+                if (x == 1)
                     student1.Address = address;
-                
-                esle
+                else
                     student2.Address = address;
-                Console.WriteLine(" Address updated");
-                
+
+                Console.WriteLine("Address updated.");
+
             }
             static void MakeDeposit()
+            {
+                Console.Write("Choose account (1 or 2): ");
+                int x = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter amount: ");
+                double amount = double.Parse(Console.ReadLine());
+
+                if (x == 1)
+                {
+                    account1.Deposit(amount);
+                    Console.WriteLine("Holder: " + account1.HolderName);
+                    Console.WriteLine("Balance: " + account1.Balance);
+                }
+                else
+                {
+                    account2.Deposit(amount);
+                    Console.WriteLine("Holder: " + account2.HolderName);
+                    Console.WriteLine("Balance: " + account2.Balance);
+                }
+            }
+        }
+            static void MakeWithdrawal()
             {
                 Console.WriteLine(" chosse account 1 or 2:");
                 int x = int.Parse(Console.ReadLine());
 
-                Console.WriteLine(" Enter the address:");
+                Console.WriteLine(" Enter the amount:");
                 double amount = double.Parse(Console.ReadLine());
                 if (x == 1)
                 {
@@ -316,6 +338,19 @@
                 else
                     Console.WriteLine("inventoy value" + prod2.GetInventoryValue());
             }
-            }
+        static void RegisterStudent()
+        {
+            Console.Write("Choose student 1 or 2: ");
+            int x = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter email");
+            string email = Console.ReadLine();
+            if(x == 1)
+                student1.Register(email);
+            else
+                student2.Register(email);
+            Console.WriteLine("student regustered");
+        }
+    }
     }
 }
