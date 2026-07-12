@@ -385,6 +385,43 @@
             else
                 Console.WriteLine("Well Stocked");
         }
+        static void TransferBetweenAccounts()
+        {
+            Console.WriteLine("scorce account 1 or 2");
+            int sourceChoice = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("destination account 1 or 2");
+            int destinationChoice = int.Parse(Console.ReadLine());
+
+            Console.Write("Amount: ");
+            double amount = double.Parse(Console.ReadLine());
+
+            BankAccount source;
+            BankAccount destination;
+
+            if (sourceChoice == 1)
+                source = account1;
+            else
+                source = account2;
+
+            if (destinationChoice == 1)
+                destination = account1;
+            else
+                destination = account2;
+
+
+            if (source.Balance >= amount)
+            {
+                source.Withdraw(amount);
+                destination.Deposit(amount);
+                Console.WriteLine("Transfered.");
+            }
+            else
+            {
+                Console.WriteLine("Transfer failed.");
+            }
+        }
+    }
     }
 
     }
