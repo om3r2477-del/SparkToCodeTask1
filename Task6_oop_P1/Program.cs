@@ -26,12 +26,25 @@ namespace Task6_oop_P1
         }
         public void Deposit(double amount)
         {
-            Balance += amount;
-            SendEmail();
+            if (amount > 0)
+            {
+                Balance += amount;
+                SendEmail();
+            }
+            else
+            {
+                Console.WriteLine("Invalid amount");
+            }
         }
-     public void Withdraw(double amount)
+        public void Withdraw(double amount)
         {
-            if(Balance >= amount)
+            if (amount <= 0)
+            {
+                Console.WriteLine("Invalid amount");
+                return;
+            }
+
+            if (Balance >= amount)
             {
                 Balance -= amount;
                 SendEmail();
@@ -109,14 +122,21 @@ namespace Task6_oop_P1
 
         public void Sell(int quantity)
         {
+            if (quantity <= 0)
+            {
+                Console.WriteLine("Invalid quantity");
+                return;
+            }
+
             if (StockQuantity >= quantity)
             {
                 StockQuantity -= quantity;
             }
             else
             {
-                Console.WriteLine("their is no enough stock");
+                Console.WriteLine("there is no enough stock");
             }
+
             LogTransaction();
         }
         public void Restock(int quantity)
@@ -155,15 +175,15 @@ namespace Task6_oop_P1
             // BankAccount objects 
 
 
-            BankAccount acount1 = new BankAccount();
-            acount1.AccountNumber = 2002;
-            acount1.HolderName = "Omar";
-            acount1.Balance = 750;
+            account1 = new BankAccount();
+            account1.AccountNumber = 2002;
+            account1.HolderName = "Omar";
+            account1.Balance = 750;
 
-            BankAccount acount2 = new BankAccount();
-            acount2.AccountNumber = 2003;
-            acount2.HolderName = "mutaz";
-            acount2.Balance = 250;
+            account2 = new BankAccount();
+            account2.AccountNumber = 2003;
+            account2.HolderName = "mutaz";
+            account2.Balance = 250;
 
             // // Student objects
             student1  = new student();
@@ -177,12 +197,12 @@ namespace Task6_oop_P1
             student2.Grade = 80;
 
             // // Product objects
-            Product prod1 = new Product();
+            prod1 = new Product();
             prod1.ProductName = "mouse";
             prod1.Price = 15.5;
             prod1.StockQuantity = 200;
 
-            Product prod2 = new Product();
+            prod2 = new Product();
             prod2.ProductName = "laptop";
             prod2.Price = 121.5;
             prod2.StockQuantity = 20;
