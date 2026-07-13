@@ -445,6 +445,27 @@
             Console.WriteLine("grade is updated");
 
         }
+        static void StudentReportCard()
+        {
+            Console.WriteLine("Choose student 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+                student s;
+
+            if (x == 1)
+                s = student1;
+            else
+                s = student2;
+            Console.WriteLine("Name: " + s.name);
+            Console.WriteLine("Address: " + s.Address);
+            Console.WriteLine("Grade: " + s.Grade);
+
+            if (s.Grade >= 60)
+                Console.WriteLine("Pass");
+            else
+                Console.WriteLine("Fail");
+
+
+        }
     }
     }
 
