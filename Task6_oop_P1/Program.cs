@@ -68,6 +68,17 @@ namespace Task6_oop_P1
         private string email;
         int age;
 
+        private string pin; // to store student pin 
+
+        public string SecurityPIN
+        {
+            set  // set so nobody outside the class can read the PIN
+            {
+                pin = value;
+            }
+        }
+
+
         private static int studentCount = 0; // to count how many student objects are created.
         public student()
         {
@@ -198,6 +209,7 @@ namespace Task6_oop_P1
                 Console.WriteLine("16. Quick Account Opening");
                 Console.WriteLine("17. Total Students Counter");
                 Console.WriteLine("18. Overdrawn Account Check");
+                Console.WriteLine("19. Set Student Security PIN");
                 Console.WriteLine("20. Exit");
 
                 Console.WriteLine("chosse an option:");
@@ -285,6 +297,9 @@ namespace Task6_oop_P1
                         break;
                     case 18:
                         OverdrawnAccountCheck();
+                        break;
+                    case 19:
+                        SetStudentPIN();
                         break;
 
                     case 20:
@@ -650,6 +665,25 @@ namespace Task6_oop_P1
                 Console.WriteLine("Account is not Overdrawn");
             }
 
+        }
+        static void SetStudentPIN()
+        {
+            Console.WriteLine("Choose student 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter 4 digit pin:");
+            string pin = Console.ReadLine();
+
+            if(pin.Length != 4)
+            {
+                Console.WriteLine("Pin must be 4 digits ");
+                return;
+            }
+            if (x == 1)
+                student1.SecurityPIN = pin;
+            else
+                student2.SecurityPIN = pin;
+            Console.WriteLine("Pin has been set successfully");
         }
     }
     }
