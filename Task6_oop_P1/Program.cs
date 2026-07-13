@@ -484,6 +484,33 @@
             else
                 Console.WriteLine("premium");
         }
+        static void BulkSaleWithRevenue()
+        {
+            Console.WriteLine("Choose product 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            Product product;
+
+            if (x == 1)
+                product = prod1;
+            else
+                product = prod2;
+            Console.WriteLine("Enter quantitiy to sell");
+            int quantity = int.Parse(Console.ReadLine());
+
+            if(product.StockQuantity <  quantity)
+            {
+                int needed = quantity - product.StockQuantity;
+                Console.WriteLine("their is no enuogh stock. need" + needed + "more units");
+
+            }
+            else
+            {
+                product.Sell(quantity);
+                double revenue = quantity * product.Price;
+                Console.WriteLine("Revenue" + revenue);
+            }
+        }
     }
     }
 
