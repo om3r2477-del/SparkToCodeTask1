@@ -1,4 +1,6 @@
-﻿namespace Task6_oop_P1
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Task6_oop_P1
 {
     // banckAcoount Class
     class BankAccount
@@ -6,8 +8,16 @@
         public int AccountNumber;
         public string HolderName;
         public double Balance;
-
-    public void Deposit(double amount)
+     public  BankAccount(int accountNumber, string holderName, double balance)
+        {
+            AccountNumber = accountNumber;
+            HolderName = holderName;
+            Balance = balance;
+        }
+        public BankAccount() // this is used to allows creating a BankAccount object without giving values immediately
+        {
+        }
+        public void Deposit(double amount)
         {
             Balance += amount;
             SendEmail();
@@ -169,6 +179,7 @@
                 Console.WriteLine("13. Bulk Sale With Revenue Calculation");
                 Console.WriteLine("14. Scholarship Eligibility Check");
                 Console.WriteLine("15. Full Balance Top-Up Flow");
+                Console.WriteLine("16. Quick Account Opening");
                 Console.WriteLine("20. Exit");
 
                 Console.WriteLine("chosse an option:");
@@ -246,6 +257,10 @@
 
                     case 15:
                         FullBalanceTopUpFlow();
+                        break;
+
+                    case 16:
+                        QuickAccountOpening();
                         break;
 
                     case 20:
@@ -567,6 +582,25 @@
             {
                 Console.WriteLine("No top-up needed.");
             }
+        }
+        static void QuickAccountOpening()
+        {
+            Console.WriteLine("Enter account number:");
+            int number = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter holder name: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Enter starting balance: ");
+            double balance = double.Parse(Console.ReadLine());
+
+
+            BankAccount newAccount = new BankAccount(number, name, balance);
+
+            Console.WriteLine("Account Created Successfully");
+            Console.WriteLine("Account Number: " + newAccount.AccountNumber);
+            Console.WriteLine("Holder Name: " + newAccount.HolderName);
+            Console.WriteLine("Balance: " + newAccount.Balance);
         }
     }
     }
