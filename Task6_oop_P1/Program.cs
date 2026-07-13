@@ -61,6 +61,15 @@ namespace Task6_oop_P1
         private string email;
         int age;
 
+        private static int studentCount = 0; // to count how many student objects are created.
+        public student()
+        {
+            studentCount++;
+        }
+    public static int GetStudentCount()
+        {
+            return studentCount;
+        }
         public void Register(string Email)
         {
             email = Email;
@@ -180,6 +189,7 @@ namespace Task6_oop_P1
                 Console.WriteLine("14. Scholarship Eligibility Check");
                 Console.WriteLine("15. Full Balance Top-Up Flow");
                 Console.WriteLine("16. Quick Account Opening");
+                Console.WriteLine("17. Total Students Counter");
                 Console.WriteLine("20. Exit");
 
                 Console.WriteLine("chosse an option:");
@@ -261,6 +271,9 @@ namespace Task6_oop_P1
 
                     case 16:
                         QuickAccountOpening();
+                        break;
+                    case 17:
+                        TotalStudentsCounter();
                         break;
 
                     case 20:
@@ -601,6 +614,10 @@ namespace Task6_oop_P1
             Console.WriteLine("Account Number: " + newAccount.AccountNumber);
             Console.WriteLine("Holder Name: " + newAccount.HolderName);
             Console.WriteLine("Balance: " + newAccount.Balance);
+        }
+        static void TotalStudentsCounter()
+        {
+            Console.WriteLine("total student created "+student.GetStudentCount());
         }
     }
     }
