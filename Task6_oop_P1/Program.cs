@@ -8,6 +8,13 @@ namespace Task6_oop_P1
         public int AccountNumber;
         public string HolderName;
         public double Balance;
+    public bool IsOverdrawn
+        {
+            get
+            {
+                return Balance < 0; // to check if account balance less than zero
+            }
+        }
      public  BankAccount(int accountNumber, string holderName, double balance)
         {
             AccountNumber = accountNumber;
@@ -190,6 +197,7 @@ namespace Task6_oop_P1
                 Console.WriteLine("15. Full Balance Top-Up Flow");
                 Console.WriteLine("16. Quick Account Opening");
                 Console.WriteLine("17. Total Students Counter");
+                Console.WriteLine("18. Overdrawn Account Check");
                 Console.WriteLine("20. Exit");
 
                 Console.WriteLine("chosse an option:");
@@ -274,6 +282,9 @@ namespace Task6_oop_P1
                         break;
                     case 17:
                         TotalStudentsCounter();
+                        break;
+                    case 18:
+                        OverdrawnAccountCheck();
                         break;
 
                     case 20:
@@ -618,6 +629,27 @@ namespace Task6_oop_P1
         static void TotalStudentsCounter()
         {
             Console.WriteLine("total student created "+student.GetStudentCount());
+        }
+        static void OverdrawnAccountCheck()
+        {
+            Console.WriteLine("Choose account 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            BankAccount account;
+
+            if (x == 1)
+                account = account1;
+            else
+                account = account2;
+        if(account.IsOverdrawn)
+            {
+                Console.WriteLine("Account is Overdrawn");
+            }
+        else
+            {
+                Console.WriteLine("Account is not Overdrawn");
+            }
+
         }
     }
     }
