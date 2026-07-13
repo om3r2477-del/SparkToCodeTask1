@@ -466,6 +466,24 @@
 
 
         }
+        static void AccountHealthStatus()
+        {
+            Console.WriteLine("choose account 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            BankAccount account;
+
+            if (x == 1)
+                account = account1;
+            else
+                account = account2;
+            if (account.Balance < 50)
+                Console.WriteLine("low balance");
+            else if (account.Balance <= 1000)
+                Console.WriteLine("healthy");
+            else
+                Console.WriteLine("premium");
+        }
     }
     }
 
