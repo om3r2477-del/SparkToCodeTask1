@@ -511,6 +511,38 @@
                 Console.WriteLine("Revenue" + revenue);
             }
         }
+        static void ScholarshipEligibilityCheck()
+        {
+            Console.WriteLine("Choose student 1 or 2:");
+            int s = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Choose account 1 or 2:");
+            int a = int.Parse(Console.ReadLine());
+
+            student selectStudent;
+            BankAccount selectAccount;
+            if (s == 1)
+                selectStudent = student1;
+            else
+                selectStudent = student2;
+
+            if (a == 1)
+                selectAccount = account1;
+            else
+                selectAccount = account2;
+
+            if(selectStudent.Grade >= 80 && selectAccount.Balance >= 100)
+            {
+                Console.WriteLine("Eligible");
+            }
+            else
+            {
+                if (selectStudent.Grade < 80)
+                    Console.WriteLine("Grade is below 80");
+                if (selectAccount.Balance < 100)
+                    Console.WriteLine("balance is below 100");
+            }
+        }
     }
     }
 
