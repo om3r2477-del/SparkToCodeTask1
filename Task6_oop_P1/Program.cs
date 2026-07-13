@@ -1,0 +1,713 @@
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Task6_oop_P1
+{
+    // banckAcoount Class
+    class BankAccount
+    {
+        public int AccountNumber;
+        public string HolderName;
+        public double Balance;
+    public bool IsOverdrawn
+        {
+            get
+            {
+                return Balance < 0; // to check if account balance less than zero
+            }
+        }
+     public  BankAccount(int accountNumber, string holderName, double balance)
+        {
+            AccountNumber = accountNumber;
+            HolderName = holderName;
+            Balance = balance;
+        }
+        public BankAccount() // this is used to allows creating a BankAccount object without giving values immediately
+        {
+        }
+        public void Deposit(double amount)
+        {
+            if (amount > 0)
+            {
+                Balance += amount;
+                SendEmail();
+            }
+            else
+            {
+                Console.WriteLine("Invalid amount");
+            }
+        }
+        public void Withdraw(double amount)
+        {
+            if (amount <= 0)
+            {
+                Console.WriteLine("Invalid amount");
+                return;
+            }
+
+            if (Balance >= amount)
+            {
+                Balance -= amount;
+                SendEmail();
+            }
+            else
+            {
+                Console.WriteLine("no enugh balance");
+            }
+        }
+        public double CheckBalance()
+        {
+            PrintInformation();
+            return Balance;
+        }
+        private void PrintInformation()
+        {
+            Console.WriteLine("name" + HolderName);
+            Console.WriteLine("Balance" + Balance);
+        }
+    private void SendEmail()
+        {
+            Console.WriteLine("Email sent");
+        }
+    }
+
+    //class Student
+
+    class student
+    {
+        public int Grade;
+        public string name;
+        public string Address;
+
+        private string email;
+        int age;
+
+        private string pin; // to store student pin 
+
+        public string SecurityPIN
+        {
+            set  // set so nobody outside the class can read the PIN
+            {
+                pin = value;
+            }
+        }
+
+
+        private static int studentCount = 0; // to count how many student objects are created.
+        public student()
+        {
+            studentCount++;
+        }
+    public static int GetStudentCount()
+        {
+            return studentCount;
+        }
+        public void Register(string Email)
+        {
+            email = Email;
+            SendEmail();
+        }
+        private void SendEmail()
+        {
+            Console.WriteLine("regestrations email is sent");
+        }
+    }
+
+    // class Product
+
+    class Product
+    {
+        public string ProductName;
+        public double Price;
+        public int StockQuantity;
+
+        public void Sell(int quantity)
+        {
+            if (quantity <= 0)
+            {
+                Console.WriteLine("Invalid quantity");
+                return;
+            }
+
+            if (StockQuantity >= quantity)
+            {
+                StockQuantity -= quantity;
+            }
+            else
+            {
+                Console.WriteLine("there is no enough stock");
+            }
+
+            LogTransaction();
+        }
+        public void Restock(int quantity)
+        {
+            StockQuantity += quantity;
+            LogTransaction();
+        }
+        public double GetInventoryValue()
+        {
+            PrintDetails();
+            return Price * StockQuantity;
+        }
+        private void PrintDetails()
+        {
+            Console.WriteLine("Product: " + ProductName);
+            Console.WriteLine("Price;" + Price);
+            Console.WriteLine("Stock:" + StockQuantity);
+        }
+        private void LogTransaction()
+        {
+            Console.WriteLine("Transaction is logged");
+        }
+    }
+    internal class Program
+    {
+        static BankAccount account1;
+        static BankAccount account2;
+
+        static student student1;
+        static student student2;
+
+        static Product prod1;
+        static Product prod2;
+        static void Main(string[] args)
+        {
+            // BankAccount objects 
+
+
+            account1 = new BankAccount();
+            account1.AccountNumber = 2002;
+            account1.HolderName = "Omar";
+            account1.Balance = 750;
+
+            account2 = new BankAccount();
+            account2.AccountNumber = 2003;
+            account2.HolderName = "mutaz";
+            account2.Balance = 250;
+
+            // // Student objects
+            student1  = new student();
+            student1.name = "Ali";
+            student1.Address = "Muscat";
+            student1.Grade = 67;
+
+            student2  = new student();
+            student2.name = "Ahmed";
+            student2.Address = "Muscat";
+            student2.Grade = 80;
+
+            // // Product objects
+            prod1 = new Product();
+            prod1.ProductName = "mouse";
+            prod1.Price = 15.5;
+            prod1.StockQuantity = 200;
+
+            prod2 = new Product();
+            prod2.ProductName = "laptop";
+            prod2.Price = 121.5;
+            prod2.StockQuantity = 20;
+
+            bool exitApp = false;
+            while (exitApp == false)
+            {
+                Console.WriteLine("\n===== OOP Part 1 - Bank / Student / Product Manager =====");
+                Console.WriteLine(" 1. View Account Details");
+                Console.WriteLine(" 2. Update Student Address");
+                Console.WriteLine(" 3. Make a Deposit");
+                Console.WriteLine(" 4. Make a Withdrawal");
+                Console.WriteLine(" 5. View Product Details");
+                Console.WriteLine(" 6. Register a Student");
+                Console.WriteLine(" 7. Compare Two Account Balances");
+                Console.WriteLine(" 8. Restock Product & Stock Level Check");
+                Console.WriteLine(" 9. Transfer Between Accounts");
+                Console.WriteLine("10. Update Student Grade (Validated)");
+                Console.WriteLine("11. Student Report Card");
+                Console.WriteLine("12. Account Health Status");
+                Console.WriteLine("13. Bulk Sale With Revenue Calculation");
+                Console.WriteLine("14. Scholarship Eligibility Check");
+                Console.WriteLine("15. Full Balance Top-Up Flow");
+                Console.WriteLine("16. Quick Account Opening");
+                Console.WriteLine("17. Total Students Counter");
+                Console.WriteLine("18. Overdrawn Account Check");
+                Console.WriteLine("19. Set Student Security PIN");
+                Console.WriteLine("20. Exit");
+
+                Console.WriteLine("chosse an option:");
+
+                int choice;
+
+                try
+                {
+                    choice = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("invalid input");
+                    continue;
+                }
+
+
+                switch (choice)
+                {
+                    case 1:
+                        ViewAccountDetails();
+                        break;
+
+                    case 2:
+                        UpdateStudentAddress();
+                        break;
+
+                    case 3:
+                        MakeDeposit();
+                        break;
+
+                    case 4:
+                        MakeWithdrawal();
+                        break;
+
+                    case 5:
+                        ViewProductDetails();
+                        break;
+
+                    case 6:
+                        RegisterStudent();
+                        break;
+
+                    case 7:
+                        CompareAccountBalances();
+                        break;
+
+                    case 8:
+                        RestockProduct();
+                        break;
+
+                    case 9:
+                        TransferBetweenAccounts();
+                        break;
+
+                    case 10:
+                        UpdateStudentGrade();
+                        break;
+
+                    case 11:
+                        StudentReportCard();
+                        break;
+
+                    case 12:
+                        AccountHealthStatus();
+                        break;
+
+                    case 13:
+                        BulkSaleWithRevenue();
+                        break;
+
+                    case 14:
+                        ScholarshipEligibilityCheck();
+                        break;
+
+                    case 15:
+                        FullBalanceTopUpFlow();
+                        break;
+
+                    case 16:
+                        QuickAccountOpening();
+                        break;
+                    case 17:
+                        TotalStudentsCounter();
+                        break;
+                    case 18:
+                        OverdrawnAccountCheck();
+                        break;
+                    case 19:
+                        SetStudentPIN();
+                        break;
+
+                    case 20:
+                        exitApp = true;
+                        Console.WriteLine("Goodbye!");
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid option.");
+                        break;
+                }
+            }
+
+            static void ViewAccountDetails()
+            {
+                Console.WriteLine(" chosse  account 1 or 2:");
+                int x = int.Parse(Console.ReadLine());
+                if (x == 1)
+
+                    account1.CheckBalance();
+
+                else
+
+                    account2.CheckBalance();
+            }
+            static void UpdateStudentAddress()
+            {
+                Console.WriteLine(" chosse student 1 or 2:");
+                int x = int.Parse(Console.ReadLine());
+
+                Console.WriteLine(" Enter the address:");
+                string address = Console.ReadLine();
+
+                if (x == 1)
+                    student1.Address = address;
+                else
+                    student2.Address = address;
+
+                Console.WriteLine("Address updated.");
+
+            }
+            static void MakeDeposit()
+            {
+                Console.Write("Choose account (1 or 2): ");
+                int x = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter amount: ");
+                double amount = double.Parse(Console.ReadLine());
+
+                if (x == 1)
+                {
+                    account1.Deposit(amount);
+                    Console.WriteLine("Holder: " + account1.HolderName);
+                    Console.WriteLine("Balance: " + account1.Balance);
+                }
+                else
+                {
+                    account2.Deposit(amount);
+                    Console.WriteLine("Holder: " + account2.HolderName);
+                    Console.WriteLine("Balance: " + account2.Balance);
+                }
+            }
+        }
+            static void MakeWithdrawal()
+            {
+                Console.WriteLine(" chosse account 1 or 2:");
+                int x = int.Parse(Console.ReadLine());
+
+                Console.WriteLine(" Enter the amount:");
+                double amount = double.Parse(Console.ReadLine());
+                if (x == 1)
+                {
+                    account1.Withdraw(amount);
+                    Console.WriteLine("Balance" + account1.Balance);
+                }
+                else
+                {
+                    account2.Withdraw(amount);
+                    Console.WriteLine("Balance" + account2.Balance);
+
+                }
+            }
+            static void ViewProductDetails()
+            {
+                Console.WriteLine(" choose product 1 or 2 ");
+                int x = int.Parse(Console.ReadLine());
+
+                if (x == 1)
+                    Console.WriteLine("inventoy value" + prod1.GetInventoryValue());
+                else
+                    Console.WriteLine("inventoy value" + prod2.GetInventoryValue());
+            }
+        static void RegisterStudent()
+        {
+            Console.Write("Choose student 1 or 2: ");
+            int x = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter email");
+            string email = Console.ReadLine();
+            if(x == 1)
+                student1.Register(email);
+            else
+                student2.Register(email);
+            Console.WriteLine("student regustered");
+        }
+        static void CompareAccountBalances()
+        {
+            if (account1.Balance > account2.Balance)
+                Console.WriteLine("Account 1 has more money.");
+            else if (account2.Balance > account1.Balance)
+                Console.WriteLine("Account 2 has more money.");
+            else
+                Console.WriteLine("Both accounts have the same balance.");
+        }
+        
+        static void RestockProduct()
+        {
+            Console.Write("Choose product 1 or 2 ");
+            int x = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter quantity: ");
+            int quantity = int.Parse(Console.ReadLine());
+
+            Product product;
+
+            if (x == 1)
+                product = prod1;
+            else
+                product = prod2;
+
+            product.Restock(quantity);
+
+            if (product.StockQuantity < 10)
+                Console.WriteLine("Low");
+            else if (product.StockQuantity <= 49)
+                Console.WriteLine("Moderate");
+            else
+                Console.WriteLine("Well Stocked");
+        }
+        static void TransferBetweenAccounts()
+        {
+            Console.WriteLine("scorce account 1 or 2");
+            int sourceChoice = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("destination account 1 or 2");
+            int destinationChoice = int.Parse(Console.ReadLine());
+
+            Console.Write("Amount: ");
+            double amount = double.Parse(Console.ReadLine());
+
+            BankAccount source;
+            BankAccount destination;
+
+            if (sourceChoice == 1)
+                source = account1;
+            else
+                source = account2;
+
+            if (destinationChoice == 1)
+                destination = account1;
+            else
+                destination = account2;
+
+
+            if (source.Balance >= amount)
+            {
+                source.Withdraw(amount);
+                destination.Deposit(amount);
+                Console.WriteLine("Transfered.");
+            }
+            else
+            {
+                Console.WriteLine("Transfer failed.");
+            }
+        }
+        static void UpdateStudentGrade()
+        {
+            Console.WriteLine("Choose student 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Entr new grade:");
+            int grade;
+            if (!int.TryParse(Console.ReadLine(), out grade))
+            {
+                Console.WriteLine("Invalid grade.");
+                return;
+            }
+            if (grade < 0 || grade > 100)
+            {
+                Console.WriteLine("grade must be bettwen 0 and 100");
+                return;
+            }
+            if (x == 1)
+                student1.Grade = grade;
+            else
+                student2.Grade = grade;
+            Console.WriteLine("grade is updated");
+
+        }
+        static void StudentReportCard()
+        {
+            Console.WriteLine("Choose student 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+                student s;
+
+            if (x == 1)
+                s = student1;
+            else
+                s = student2;
+            Console.WriteLine("Name: " + s.name);
+            Console.WriteLine("Address: " + s.Address);
+            Console.WriteLine("Grade: " + s.Grade);
+
+            if (s.Grade >= 60)
+                Console.WriteLine("Pass");
+            else
+                Console.WriteLine("Fail");
+
+
+        }
+        static void AccountHealthStatus()
+        {
+            Console.WriteLine("choose account 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            BankAccount account;
+
+            if (x == 1)
+                account = account1;
+            else
+                account = account2;
+            if (account.Balance < 50)
+                Console.WriteLine("low balance");
+            else if (account.Balance <= 1000)
+                Console.WriteLine("healthy");
+            else
+                Console.WriteLine("premium");
+        }
+        static void BulkSaleWithRevenue()
+        {
+            Console.WriteLine("Choose product 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            Product product;
+
+            if (x == 1)
+                product = prod1;
+            else
+                product = prod2;
+            Console.WriteLine("Enter quantitiy to sell");
+            int quantity = int.Parse(Console.ReadLine());
+
+            if(product.StockQuantity <  quantity)
+            {
+                int needed = quantity - product.StockQuantity;
+                Console.WriteLine("their is no enuogh stock. need" + needed + "more units");
+
+            }
+            else
+            {
+                product.Sell(quantity);
+                double revenue = quantity * product.Price;
+                Console.WriteLine("Revenue" + revenue);
+            }
+        }
+        static void ScholarshipEligibilityCheck()
+        {
+            Console.WriteLine("Choose student 1 or 2:");
+            int s = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Choose account 1 or 2:");
+            int a = int.Parse(Console.ReadLine());
+
+            student selectStudent;
+            BankAccount selectAccount;
+            if (s == 1)
+                selectStudent = student1;
+            else
+                selectStudent = student2;
+
+            if (a == 1)
+                selectAccount = account1;
+            else
+                selectAccount = account2;
+
+            if(selectStudent.Grade >= 80 && selectAccount.Balance >= 100)
+            {
+                Console.WriteLine("Eligible");
+            }
+            else
+            {
+                if (selectStudent.Grade < 80)
+                    Console.WriteLine("Grade is below 80");
+                if (selectAccount.Balance < 100)
+                    Console.WriteLine("balance is below 100");
+            }
+        }
+        static void FullBalanceTopUpFlow()
+        {
+            Console.WriteLine("Choose account 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            BankAccount account;
+
+            if (x == 1)
+                account = account1;
+            else
+                account = account2;
+            Console.WriteLine("balance befor top up" + account.Balance);
+
+            if(account.Balance < 50)
+            {
+                double amount = 100 - account.Balance;
+                account.Deposit(amount);
+                Console.WriteLine("Top-up amount: " + amount);
+                Console.WriteLine("Balance after top-up: " + account.Balance);
+            }
+            else
+            {
+                Console.WriteLine("No top-up needed.");
+            }
+        }
+        static void QuickAccountOpening()
+        {
+            Console.WriteLine("Enter account number:");
+            int number = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter holder name: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Enter starting balance: ");
+            double balance = double.Parse(Console.ReadLine());
+
+
+            BankAccount newAccount = new BankAccount(number, name, balance);
+
+            Console.WriteLine("Account Created Successfully");
+            Console.WriteLine("Account Number: " + newAccount.AccountNumber);
+            Console.WriteLine("Holder Name: " + newAccount.HolderName);
+            Console.WriteLine("Balance: " + newAccount.Balance);
+        }
+        static void TotalStudentsCounter()
+        {
+            Console.WriteLine("total student created "+student.GetStudentCount());
+        }
+        static void OverdrawnAccountCheck()
+        {
+            Console.WriteLine("Choose account 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            BankAccount account;
+
+            if (x == 1)
+                account = account1;
+            else
+                account = account2;
+        if(account.IsOverdrawn)
+            {
+                Console.WriteLine("Account is Overdrawn");
+            }
+        else
+            {
+                Console.WriteLine("Account is not Overdrawn");
+            }
+
+        }
+        static void SetStudentPIN()
+        {
+            Console.WriteLine("Choose student 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter 4 digit pin:");
+            string pin = Console.ReadLine();
+
+            if(pin.Length != 4)
+            {
+                Console.WriteLine("Pin must be 4 digits ");
+                return;
+            }
+            if (x == 1)
+                student1.SecurityPIN = pin;
+            else
+                student2.SecurityPIN = pin;
+            Console.WriteLine("Pin has been set successfully");
+        }
+    }
+    }
+
+    
+
+
