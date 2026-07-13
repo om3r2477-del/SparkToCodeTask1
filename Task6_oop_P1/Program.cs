@@ -421,9 +421,33 @@
                 Console.WriteLine("Transfer failed.");
             }
         }
+        static void UpdateStudentGrade()
+        {
+            Console.WriteLine("Choose student 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Entr new grade:");
+            int grade;
+            if (int.TryParse(Console.ReadLine(), out grade))
+            {
+                Console.WriteLine("Invalid grade.");
+                return;
+            }
+            if (grade < 0 || grade > 100)
+            {
+                Console.WriteLine("grade must be bettwen 0 and 100");
+                return;
+            }
+            if (x == 1)
+                student1.Grade = grade;
+            else
+                student2.Grade = grade;
+            Console.WriteLine("grade is updated");
+
+        }
     }
     }
 
-    }
-}
-}
+    
+
+
