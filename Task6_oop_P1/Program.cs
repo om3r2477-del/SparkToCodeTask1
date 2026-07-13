@@ -543,6 +543,31 @@
                     Console.WriteLine("balance is below 100");
             }
         }
+        static void FullBalanceTopUpFlow()
+        {
+            Console.WriteLine("Choose account 1 or 2:");
+            int x = int.Parse(Console.ReadLine());
+
+            BankAccount account;
+
+            if (x == 1)
+                account = account1;
+            else
+                account = account2;
+            Console.WriteLine("balance befor top up" + account.Balance);
+
+            if(account.Balance < 50)
+            {
+                double amount = 100 - account.Balance;
+                account.Deposit(amount);
+                Console.WriteLine("Top-up amount: " + amount);
+                Console.WriteLine("Balance after top-up: " + account.Balance);
+            }
+            else
+            {
+                Console.WriteLine("No top-up needed.");
+            }
+        }
     }
     }
 
