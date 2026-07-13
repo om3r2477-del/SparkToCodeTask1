@@ -129,12 +129,12 @@
             acount2.Balance = 250;
 
             // // Student objects
-            student student1 = new student();
+            student1  = new student();
             student1.name = "Ali";
             student1.Address = "Muscat";
             student1.Grade = 67;
 
-            student student2 = new student();
+            student2  = new student();
             student2.name = "Ahmed";
             student2.Address = "Muscat";
             student2.Grade = 80;
@@ -428,7 +428,7 @@
 
             Console.WriteLine("Entr new grade:");
             int grade;
-            if (int.TryParse(Console.ReadLine(), out grade))
+            if (!int.TryParse(Console.ReadLine(), out grade))
             {
                 Console.WriteLine("Invalid grade.");
                 return;
