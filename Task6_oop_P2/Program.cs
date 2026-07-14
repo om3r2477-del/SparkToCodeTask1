@@ -471,6 +471,28 @@ namespace Task6_oop_P2
 
                             break;
                         }
+                    case 9:
+                        Console.Write("Enter guest name to search: ");
+                        string searchName = Console.ReadLine(); // get name to search
+
+                        var foundGuests = guests
+                            .Where(g => g.GuestName.Contains(searchName, StringComparison.OrdinalIgnoreCase)); // search names using Where()
+
+                        if (foundGuests.Count() == 0)
+                        {
+                            Console.WriteLine("No guests matched that search.");
+                            break;
+                        }
+                        Console.WriteLine("Count: " + foundGuests.Count());
+                        foreach (Guest g in foundGuests)
+                        {
+                            Console.WriteLine("Guest ID: " + g.GuestId);
+                            Console.WriteLine("Guest Name: " + g.GuestName);
+                            Console.WriteLine("Room Number: " + g.RoomNumber);
+                            Console.WriteLine();
+                        }
+
+                        break;
                     case 0:
 
                         Console.WriteLine("Exit program");
