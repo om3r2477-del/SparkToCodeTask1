@@ -105,8 +105,8 @@ namespace Task6_oop_P2
                         if (totalNights <= 0)
                         {
                             Console.WriteLine("The number of nights must be positive");
-                        
-                        break;
+
+                            break;
                         }                                                      // D3  means show the number with 3 digits
                         string guestId = "G" + (guests.Count() + 1).ToString("D3"); //generates a unique guest ID based on the number of guests
                         Guest guest = new Guest(guestId, guestName, "Not Assigned", checkInDate, totalNights);
@@ -171,14 +171,14 @@ namespace Task6_oop_P2
 
                     case 4:
 
-                    if(rooms.Count() == 0) // // Check if there are any rooms
+                        if (rooms.Count() == 0) // // Check if there are any rooms
                         {
-                            Console.WriteLine("Their is no romms yat"); 
+                            Console.WriteLine("Their is no romms yat");
                             break;
                         }
                         Console.WriteLine("Total Rooms" + rooms.Count());
-                        
-                    foreach(Room roomItem in rooms.OrderBy(r => r.RoomNumber).Select(r => r))
+
+                        foreach (Room roomItem in rooms.OrderBy(r => r.RoomNumber).Select(r => r))
                         {
                             Console.WriteLine("RoomNumber" + roomItem.RoomNumber);
                             Console.WriteLine("Room Type: " + roomItem.RoomType);
@@ -197,10 +197,10 @@ namespace Task6_oop_P2
                         }
 
                         break;
-                
 
 
-                        
+
+
 
 
                     case 5:
@@ -231,15 +231,15 @@ namespace Task6_oop_P2
                             Console.Clear();
 
                             Console.WriteLine("1. Show all available rooms");
-                            Console.WriteLine("2. Filter by room type"); 
-                            Console.WriteLine("3. Filter by max price"); 
-                            Console.WriteLine("4. Room price statistics"); 
-                            Console.WriteLine("0. Back"); 
+                            Console.WriteLine("2. Filter by room type");
+                            Console.WriteLine("3. Filter by max price");
+                            Console.WriteLine("4. Room price statistics");
+                            Console.WriteLine("0. Back");
 
                             Console.Write("Enter your choice: ");
                             subChoice = Convert.ToInt32(Console.ReadLine());
 
-                            switch(subChoice)
+                            switch (subChoice)
                             {
                                 case 1:
 
@@ -377,70 +377,100 @@ namespace Task6_oop_P2
 
 
                         break;
-                    //// Case 7 needs booked guests, so add guests and assign rooms using cases 1, 2, and 3 first.
+                        //// Case 7 needs booked guests, so add guests and assign rooms using cases 1, 2, and 3 first.
+                
                     case 7:
-
-                        // check if there are  bookings
-                        bool hasBookings = guests.Any(g => g.RoomNumber != "Not Assigned");
-
-                        if (!hasBookings)
                         {
-                            Console.WriteLine("No active bookings recorded.");
+                            // check if there are  bookings
+                            bool hasBookings = guests.Any(g => g.RoomNumber != "Not Assigned");
+
+                            if (!hasBookings)
+                            {
+                                Console.WriteLine("No active bookings recorded.");
+                                break;
+                            }
+                            // total gusts
+                            Console.WriteLine("Total registered Gusts:" + guests.Count());
+
+                            // gusets with assined rooms
+                            Console.WriteLine("Gusets with bookings" + guests.Count(g => g.RoomNumber != "Not Assigned"));
+                            // Total rooms
+                            Console.WriteLine("Total rooms" + rooms.Count());
+
+                            // booked rooms
+                            Console.WriteLine("Booked Rooms: " + rooms.Count(r => r.IsAvailable == false));
+
+                            // average nights of booked guests
+                            Console.WriteLine("Average Nights: " +
+                                guests
+                                .Where(g => g.RoomNumber != "Not Assigned")
+                                .Average(g => g.TotalNights)
+                                .ToString("F2"));
+
+
+
+                            var topGuests = guests
+                                .Where(g => g.RoomNumber != "Not Assigned")
+                                .OrderByDescending(g => g.CalculateTotalCost(rooms))
+                                .Take(3);
+
+
+                            foreach (Guest g in topGuests)
+                            {
+                                Console.WriteLine("Guest Name: " + g.GuestName);
+                                Console.WriteLine("Room Number: " + g.RoomNumber);
+                                Console.WriteLine("Total Cost: " + g.CalculateTotalCost(rooms).ToString("F2"));
+
+                            }
+
+
+                            // booked guest summaries using Select()
+
+
+                            var guestSummary = guests
+                                .Where(g => g.RoomNumber != "Not Assigned")
+                                .Select(g => g.GuestName + " — Room " + g.RoomNumber +
+                                " — " + g.TotalNights + " nights — OMR " +
+                                g.CalculateTotalCost(rooms).ToString("F2"));
+
+
+                            foreach (string summary in guestSummary)
+                            {
+                                Console.WriteLine(summary);
+                            }
                             break;
                         }
-                        // total gusts
-                        Console.WriteLine("Total registered Gusts:" + guests.Count());
-
-                        // gusets with assined rooms
-                        Console.WriteLine("Gusets with bookings" + guests.Count(g => g.RoomNumber != "Not Assigned"));
-                        // Total rooms
-                        Console.WriteLine("Total rooms" + rooms.Count());
-
-                        // booked rooms
-                        Console.WriteLine("Booked Rooms: " + rooms.Count(r => r.IsAvailable == false));
-
-                        // average nights of booked guests
-                        Console.WriteLine("Average Nights: " +
-                            guests
-                            .Where(g => g.RoomNumber != "Not Assigned")
-                            .Average(g => g.TotalNights)
-                            .ToString("F2"));
-
-
-
-                        var topGuests = guests
-                            .Where(g => g.RoomNumber != "Not Assigned")
-                            .OrderByDescending(g => g.CalculateTotalCost(rooms))
-                            .Take(3);
-
-
-                        foreach (Guest g in topGuests)
+                    case 8:
                         {
-                            Console.WriteLine("Guest Name: " + g.GuestName);
-                            Console.WriteLine("Room Number: " + g.RoomNumber);
-                            Console.WriteLine("Total Cost: " + g.CalculateTotalCost(rooms).ToString("F2"));
-                            
+                            Console.Write("Enter Room Number: ");
+                            int updateRoomNumber = Convert.ToInt32(Console.ReadLine()); // get room number
+
+                            Room updateRoom = rooms.FirstOrDefault(r => r.RoomNumber == updateRoomNumber); // find room using FirstOrDefault()
+
+                            if (updateRoom == null) // check if room exists
+                            {
+                                Console.WriteLine("Room not found.");
+                                break;
+                            }
+
+                            Console.Write("Enter new price per night: ");
+                            double newPrice = Convert.ToDouble(Console.ReadLine()); // to  get new price
+
+                            if (newPrice <= 0) // validate price
+                            {
+                                Console.WriteLine("Price must be a positive number.");
+                                break;
+                            }
+                            double oldPrice = updateRoom.PricePerNight; // to store old price
+
+                            updateRoom.PricePerNight = newPrice;
+
+                          // updated 
+                            Console.WriteLine("Old Price: " + oldPrice.ToString("F2"));
+                            Console.WriteLine("New Price: " + updateRoom.PricePerNight.ToString("F2"));
+
+                            break;
                         }
-
-
-                        // booked guest summaries using Select()
-                       
-
-                        var guestSummary = guests
-                            .Where(g => g.RoomNumber != "Not Assigned")
-                            .Select(g => g.GuestName + " — Room " + g.RoomNumber +
-                            " — " + g.TotalNights + " nights — OMR " +
-                            g.CalculateTotalCost(rooms).ToString("F2"));
-
-
-                        foreach (string summary in guestSummary)
-                        {
-                            Console.WriteLine(summary);
-                        }
-
-
-                        break;
-
                     case 0:
 
                         Console.WriteLine("Exit program");
