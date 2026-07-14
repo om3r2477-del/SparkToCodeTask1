@@ -377,8 +377,69 @@ namespace Task6_oop_P2
 
 
                         break;
+                    //// Case 7 needs booked guests, so add guests and assign rooms using cases 1, 2, and 3 first.
+                    case 7:
+
+                        // check if there are  bookings
+                        bool hasBookings = guests.Any(g => g.RoomNumber != "Not Assigned");
+
+                        if (!hasBookings)
+                        {
+                            Console.WriteLine("No active bookings recorded.");
+                            break;
+                        }
+                        // total gusts
+                        Console.WriteLine("Total registered Gusts:" + guests.Count());
+
+                        // gusets with assined rooms
+                        Console.WriteLine("Gusets with bookings" + guests.Count(g => g.RoomNumber != "Not Assigned"));
+                        // Total rooms
+                        Console.WriteLine("Total rooms" + rooms.Count());
+
+                        // booked rooms
+                        Console.WriteLine("Booked Rooms: " + rooms.Count(r => r.IsAvailable == false));
+
+                        // average nights of booked guests
+                        Console.WriteLine("Average Nights: " +
+                            guests
+                            .Where(g => g.RoomNumber != "Not Assigned")
+                            .Average(g => g.TotalNights)
+                            .ToString("F2"));
 
 
+
+                        var topGuests = guests
+                            .Where(g => g.RoomNumber != "Not Assigned")
+                            .OrderByDescending(g => g.CalculateTotalCost(rooms))
+                            .Take(3);
+
+
+                        foreach (Guest g in topGuests)
+                        {
+                            Console.WriteLine("Guest Name: " + g.GuestName);
+                            Console.WriteLine("Room Number: " + g.RoomNumber);
+                            Console.WriteLine("Total Cost: " + g.CalculateTotalCost(rooms).ToString("F2"));
+                            
+                        }
+
+
+                        // booked guest summaries using Select()
+                       
+
+                        var guestSummary = guests
+                            .Where(g => g.RoomNumber != "Not Assigned")
+                            .Select(g => g.GuestName + " — Room " + g.RoomNumber +
+                            " — " + g.TotalNights + " nights — OMR " +
+                            g.CalculateTotalCost(rooms).ToString("F2"));
+
+
+                        foreach (string summary in guestSummary)
+                        {
+                            Console.WriteLine(summary);
+                        }
+
+
+                        break;
 
                     case 0:
 
