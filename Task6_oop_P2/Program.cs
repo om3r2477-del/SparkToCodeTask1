@@ -1,4 +1,5 @@
-﻿namespace Task6_oop_P2
+﻿
+namespace Task6_oop_P2
 {
     internal class Program
     {
@@ -50,43 +51,68 @@
 
                 {
                     case 1:
-                        Console.WriteLine("Add New Room");
+                        Console.WriteLine("Enter Room Number:");
+                        int roomNumber = Convert.ToInt32(Console.ReadLine());
+
+                        Console.WriteLine("Enter Room Type (double , single , suite)");
+                        string roomType = Console.ReadLine();
+
+                        Console.WriteLine("Enter Price per Night:");
+                        double price = Convert.ToDouble(Console.ReadLine());
+
+                    if(roomNumber <= 0 || price <= 0)
+                        {
+                            Console.WriteLine("Room number and price must be positive numbers.");
+                            break;
+                        }
+
+
+                        // Check if room number already exists using LINQ Any()
+                        bool roomExists = rooms.Any(r => r.RoomNumber == roomNumber);
+
+                        if (roomExists)
+                        {
+                            Console.WriteLine("Error: Room number already exists.");
+                            break;
+                        }
+
+
+                        // Create new Room object and add it to the list
+                        Room room = new Room(roomNumber, roomType, price, true);
+
+                        rooms.Add(room);
+
+
+                        // Display success message
+                        Console.WriteLine("Room added successfully!");
+                        Console.WriteLine("Room Number: " + roomNumber);
+                        Console.WriteLine("Room Type: " + roomType);
+                        Console.WriteLine("Price Per Night: " + price);
+                        Console.WriteLine("Total Rooms: " + rooms.Count);
+
                         break;
+                        
                     case 2:
-                        Console.WriteLine("Register New Guest");
+                        
                         break;
 
 
                     case 3:
-                        Console.WriteLine("Book Room");
+                        
                         break;
 
 
                     case 4:
 
-                        // Display all rooms
-                        foreach (Room room in rooms)
-                        {
-                            room.DisplayRoom();
-                        }
+                        
 
                         break;
 
 
                     case 5:
 
-                        // Display all guests
-                        if (guests.Count == 0)
-                        {
-                            Console.WriteLine("No guests found.");
-                        }
-                        else
-                        {
-                            foreach (Guest guest in guests)
-                            {
-                                guest.DisplayGuest();
-                            }
-                        }
+                        
+                        
 
                         break;
 
@@ -116,4 +142,4 @@
         }
             }
     }
-}
+
