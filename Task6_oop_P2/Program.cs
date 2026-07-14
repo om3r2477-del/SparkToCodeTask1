@@ -493,6 +493,39 @@ namespace Task6_oop_P2
                         }
 
                         break;
+
+
+                    case 10:
+                    
+                        Console.WriteLine("Room Type Breakdown Report");
+
+                        string[] roomTypes = { "Single", "Double", "Suite" };
+
+                        foreach (string type in roomTypes)
+                        {
+                            var roomsOfType = rooms.Where(r => r.RoomType.Equals(type, StringComparison.OrdinalIgnoreCase));
+
+                            int roomCount = roomsOfType.Count();
+
+                            Console.WriteLine("\nRoom Type: " + type);
+                            Console.WriteLine("Number of Rooms: " + roomCount);
+
+                            if (roomCount > 0)
+                            {
+                                double averagePrice = roomsOfType.Average(r => r.PricePerNight);
+                                Console.WriteLine("Average Price: " + averagePrice.ToString("F2"));
+                            }
+                            else
+                            {
+                                Console.WriteLine("Average Price: N/A");
+                            }
+                        }
+
+                        double overallAverage = rooms.Average(r => r.PricePerNight);
+
+                        Console.WriteLine("\nOverall Average Price: " + overallAverage.ToString("F2"));
+
+                        break;
                     case 0:
 
                         Console.WriteLine("Exit program");
