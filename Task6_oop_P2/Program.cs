@@ -60,7 +60,7 @@ namespace Task6_oop_P2
                         Console.WriteLine("Enter Price per Night:");
                         double price = Convert.ToDouble(Console.ReadLine());
 
-                    if(roomNumber <= 0 || price <= 0)
+                        if (roomNumber <= 0 || price <= 0)
                         {
                             Console.WriteLine("Room number and price must be positive numbers.");
                             break;
@@ -91,12 +91,36 @@ namespace Task6_oop_P2
                         Console.WriteLine("Total Rooms: " + rooms.Count);
 
                         break;
-                        
+
                     case 2:
+                        Console.WriteLine("Enter guest Name :");
+                        string guestName = Console.ReadLine();
+
+                        Console.WriteLine("check In Date  :");
+                        string checkInDate = Console.ReadLine();
+
+                        Console.WriteLine("Enter number of nights");
+                        int totalNights = Convert.ToInt32(Console.ReadLine());
+
+                        if (totalNights <= 0)
+                        {
+                            Console.WriteLine("The number of nights must be positive");
                         
                         break;
+                        }                                                      // D3  means show the number with 3 digits
+                        string guestId = "G" + (guests.Count() + 1).ToString("D3"); //generates a unique guest ID based on the number of guests
+                        Guest guest = new Guest(guestId, guestName, "Not Assigned", checkInDate, totalNights);
+                        guests.Add(guest);
 
 
+                        // Display confirmation
+                        Console.WriteLine("Guest registered successfully!");
+                        Console.WriteLine("Guest ID: " + guestId);
+                        Console.WriteLine("Guest Name: " + guestName);
+                        Console.WriteLine("Check-In Date: " + checkInDate);
+                        Console.WriteLine("Number of Nights: " + totalNights);
+
+                        break;
                     case 3:
                         
                         break;

@@ -6,13 +6,13 @@ namespace Task6_oop_P2
 {
     internal class Guest
     {
-        public int GuestId { get; set; }
+        public string GuestId { get; set; }
         public string GuestName { get; set; }
-        public int RoomNumber { get; set; }
-        public DateTime CheckInDate { get; set; }
+        public string RoomNumber { get; set; }
+        public string CheckInDate { get; set; }
         public int TotalNights { get; set; }
 
-        public Guest(int guestId, string guestName, int roomNumber, DateTime checkInDate, int totalNights)
+        public Guest(string guestId, string guestName, string roomNumber, string checkInDate, int totalNights)
         {
             GuestId = guestId;
             GuestName = guestName;
@@ -26,7 +26,7 @@ namespace Task6_oop_P2
             Console.WriteLine("Guest Id:" + GuestId);
             Console.WriteLine("Guest Name:" + GuestName);
             Console.WriteLine("Room Number:" + RoomNumber);
-            Console.WriteLine("Check In Date" + CheckInDate.ToShortDateString());
+            Console.WriteLine("Check In Date" + CheckInDate);
             Console.WriteLine("Total Nights:" + TotalNights);
         }
 
@@ -34,9 +34,9 @@ namespace Task6_oop_P2
         {
             foreach (Room room in rooms) //  Go through each room in the rooms list
             {
-                if(room.RoomNumber == RoomNumber)
+                if (room.RoomNumber.ToString() == RoomNumber)
                 {
-                    return room.PricePerNight * TotalNights; // calculte cost Room price per night × number of nights stayed
+                    return room.PricePerNight * TotalNights;
                 }
             }
             return 0; // if no matching rooms is found
