@@ -24,7 +24,7 @@ namespace Task6_oop_P2
             {
                 Console.Clear();
                 Console.WriteLine(".............................................");
-                Console.WriteLine("GRAND VISTA HOTEL - MANAGEMENT SYSTEM\"");
+                Console.WriteLine("GRAND VISTA HOTEL - MANAGEMENT SYSTEM");
                 Console.WriteLine(".............................................");
                 Console.WriteLine("1. Add New Room");
                 Console.WriteLine("2. Register New Guest");
@@ -122,7 +122,50 @@ namespace Task6_oop_P2
 
                         break;
                     case 3:
-                        
+                        Console.WriteLine("Enter Guest Id:");
+                        string searchGuestId = Console.ReadLine();
+
+                        Console.WriteLine("Enter Room Number:");
+                        int searchRoomNumber = Convert.ToInt32(Console.ReadLine());
+
+                        // Find guest using LINQ FirstOrDefault()
+                        Guest foundGuest = guests.FirstOrDefault(g => g.GuestId == searchGuestId);
+
+                        if (foundGuest == null)
+                        {
+                            Console.WriteLine("Guest not found.");
+                            break;
+                        }
+                        Room foundRoom = rooms.FirstOrDefault(r => r.RoomNumber == searchRoomNumber);
+
+                        if (foundRoom == null)
+                        {
+                            Console.WriteLine("Room not found.");
+                            break;
+                        }
+                        // Check if room is availabe
+                        if (foundRoom.IsAvailable == false)
+                        {
+                            Console.WriteLine("Room is already booked.");
+                            break;
+                        }
+
+
+                        // Update guest and room objects
+                        foundGuest.RoomNumber = foundRoom.RoomNumber.ToString();
+                        foundRoom.IsAvailable = false;
+
+
+                        // Display booking confirmation
+                        Console.WriteLine("Booking successful!");
+                        Console.WriteLine("Guest Name: " + foundGuest.GuestName);
+                        Console.WriteLine("Room Number: " + foundRoom.RoomNumber);
+                        Console.WriteLine("Room Type: " + foundRoom.RoomType);
+                        Console.WriteLine("Price Per Night: " + foundRoom.PricePerNight);
+                        Console.WriteLine("Total Nights: " + foundGuest.TotalNights);
+                        Console.WriteLine("Total Cost: " + foundGuest.CalculateTotalCost(rooms));
+
+
                         break;
 
 
