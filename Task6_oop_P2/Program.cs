@@ -223,8 +223,161 @@ namespace Task6_oop_P2
                         }
 
                         break;
+                    case 6:
+                        int subChoice;
 
-                        
+                        do
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine("1. Show all available rooms");
+                            Console.WriteLine("2. Filter by room type"); 
+                            Console.WriteLine("3. Filter by max price"); 
+                            Console.WriteLine("4. Room price statistics"); 
+                            Console.WriteLine("0. Back"); 
+
+                            Console.Write("Enter your choice: ");
+                            subChoice = Convert.ToInt32(Console.ReadLine());
+
+                            switch(subChoice)
+                            {
+                                case 1:
+
+                                    var availableRooms = rooms
+                                        .Where(r => r.IsAvailable) // to  get available rooms
+                                        .OrderBy(r => r.PricePerNight); //to  sort by price
+
+
+                                    if (availableRooms.Count() == 0) // check if rooms is 0 no = rooms
+                                    {
+                                        Console.WriteLine("No rooms found for the selected criteria .");
+                                        break;
+                                    }
+
+
+                                    Console.WriteLine("Count: " + availableRooms.Count());
+
+
+                                    foreach (Room r in availableRooms) // display rooms
+                                    {
+                                        Console.WriteLine("Room Number: " + r.RoomNumber);
+                                        Console.WriteLine("Room Type: " + r.RoomType);
+                                        Console.WriteLine("Price: " + r.PricePerNight.ToString("F2"));
+                                        Console.WriteLine();
+                                    }
+
+                                    break;
+
+
+
+                                case 2:
+
+                                    Console.Write("Enter room type: ");
+                                    string type = Console.ReadLine(); // to get rooms type
+
+
+                                    var typeRooms = rooms
+                                        .Where(r => r.RoomType.Equals(type, StringComparison.OrdinalIgnoreCase)); // this is to filter type
+
+
+                                    if (typeRooms.Count() == 0)
+                                    {
+                                        Console.WriteLine("No rooms found for the selected criteria.");
+                                        break;
+                                    }
+
+
+                                    Console.WriteLine("Count: " + typeRooms.Count());
+
+
+                                    foreach (Room r in typeRooms) // display rooms
+                                    {
+                                        Console.WriteLine("Room Number: " + r.RoomNumber);
+                                        Console.WriteLine("Room Type: " + r.RoomType);
+                                        Console.WriteLine("Price: " + r.PricePerNight.ToString("F2"));
+                                        Console.WriteLine("Available: " + r.IsAvailable);
+                                        Console.WriteLine();
+                                    }
+
+                                    break;
+
+
+
+                                case 3:
+
+                                    Console.Write("Enter maximum price: ");
+                                    double maxPrice = Convert.ToDouble(Console.ReadLine());
+
+
+                                    var priceRooms = rooms
+                                        .Where(r => r.IsAvailable && r.PricePerNight <= maxPrice) // filter available and price
+                                        .OrderBy(r => r.PricePerNight); // sort price
+
+
+                                    if (priceRooms.Count() == 0)
+                                    {
+                                        Console.WriteLine("No rooms found for the selected criteria.");
+                                        break;
+                                    }
+
+
+                                    Console.WriteLine("Count: " + priceRooms.Count());
+
+
+                                    foreach (Room r in priceRooms) // display rooms
+                                    {
+                                        Console.WriteLine("Room Number: " + r.RoomNumber);
+                                        Console.WriteLine("Room Type: " + r.RoomType);
+                                        Console.WriteLine("Price: " + r.PricePerNight.ToString("F2"));
+                                        Console.WriteLine();
+                                    }
+
+                                    break;
+
+
+
+                                case 4:
+
+                                    Console.WriteLine("Total Rooms: " + rooms.Count());                           // F2 for two decimal placese
+
+                                    Console.WriteLine("Available Rooms: " + rooms.Count(r => r.IsAvailable)); // to count avalible rooms
+
+                                    Console.WriteLine("Average Price: " + rooms.Average(r => r.PricePerNight).ToString("F2")); // to know avrage price
+
+                                    Console.WriteLine("Cheapest Price: " + rooms.Min(r => r.PricePerNight).ToString("F2")); // to know min price
+
+                                    Console.WriteLine("Most Expensive Price: " + rooms.Max(r => r.PricePerNight).ToString("F2")); // to know max price
+
+                                    break;
+
+
+
+                                case 0:
+
+                                    break;
+
+
+
+                                default:
+
+                                    Console.WriteLine("Invalid choice.");
+
+                                    break;
+                            }
+
+
+                            if (subChoice != 0)
+                            {
+                                Console.WriteLine("Press any key...");
+                                Console.ReadKey();
+                            }
+
+
+                        } while (subChoice != 0);
+
+
+                        break;
+
 
 
                     case 0:
