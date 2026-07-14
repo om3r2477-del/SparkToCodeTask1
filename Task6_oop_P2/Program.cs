@@ -205,10 +205,26 @@ namespace Task6_oop_P2
 
                     case 5:
 
-                        
-                        
+                        if (guests.Count() == 0)
+                        {
+                            Console.WriteLine("there is no guests registered yet.");
+                            break;
+                        }
+                        Console.WriteLine("Total Guests: " + guests.Count());
+
+                        foreach (Guest guestItem in guests.OrderBy(g => g.GuestName).Select(g => g))
+                        {
+                            Console.WriteLine("Guest ID: " + guestItem.GuestId);
+                            Console.WriteLine("Guest Name: " + guestItem.GuestName);
+                            Console.WriteLine("Room Number: " + guestItem.RoomNumber);
+                            Console.WriteLine("Check In Date: " + guestItem.CheckInDate);
+                            Console.WriteLine("Total Nights: " + guestItem.TotalNights);
+                            Console.WriteLine();
+                        }
 
                         break;
+
+                        
 
 
                     case 0:
