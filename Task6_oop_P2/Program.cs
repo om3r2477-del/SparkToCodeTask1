@@ -156,7 +156,7 @@ namespace Task6_oop_P2
                         foundRoom.IsAvailable = false;
 
 
-                        // Display booking confirmation
+                        // Display booking info
                         Console.WriteLine("Booking successful!");
                         Console.WriteLine("Guest Name: " + foundGuest.GuestName);
                         Console.WriteLine("Room Number: " + foundRoom.RoomNumber);
@@ -171,9 +171,36 @@ namespace Task6_oop_P2
 
                     case 4:
 
+                    if(rooms.Count() == 0) // // Check if there are any rooms
+                        {
+                            Console.WriteLine("Their is no romms yat"); 
+                            break;
+                        }
+                        Console.WriteLine("Total Rooms" + rooms.Count());
                         
+                    foreach(Room roomItem in rooms.OrderBy(r => r.RoomNumber).Select(r => r))
+                        {
+                            Console.WriteLine("RoomNumber" + roomItem.RoomNumber);
+                            Console.WriteLine("Room Type: " + roomItem.RoomType);
+                            Console.WriteLine("Price Per Night: " + roomItem.PricePerNight);
+
+                            if (roomItem.IsAvailable)
+                            {
+                                Console.WriteLine("Status: Available");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Status: Booked");
+                            }
+
+                            Console.WriteLine();
+                        }
 
                         break;
+                
+
+
+                        
 
 
                     case 5:
