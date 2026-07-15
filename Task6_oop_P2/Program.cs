@@ -1,5 +1,5 @@
 ﻿
-namespace Task6_oop_P2
+namespace HotelManagementSystem
 {
     internal class Program
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Task6_oop_P2
+namespace HotelManagementSystem
 {
     internal class Room
     {
