@@ -570,10 +570,12 @@ namespace HotelManagementSystem
 
                             if (confirm.Equals("Y", StringComparison.OrdinalIgnoreCase))
                             {
-                                checkoutRoom.IsAvailable = true;
+                                checkoutRoom.IsAvailable = false; // Changed room status to unavailable after checkout so Case 12 can identify rooms
 
-                                guests.Remove(checkoutGuest);
+                                guests.Remove(checkoutGuest); // that are unavailable and have no active guest booking.
 
+                                Console.WriteLine("Guests left: " + guests.Count);
+                                // Remove the guest from the guest list after checkout
                                 Console.WriteLine("Checkout completed successfully.");
 
                                 Console.WriteLine("Remaining Guests: " + guests.Count);
