@@ -163,7 +163,7 @@ namespace Task6_oop_P2
                         Console.WriteLine("Room Type: " + foundRoom.RoomType);
                         Console.WriteLine("Price Per Night: " + foundRoom.PricePerNight);
                         Console.WriteLine("Total Nights: " + foundGuest.TotalNights);
-                        Console.WriteLine("Total Cost: " + foundGuest.CalculateTotalCost(rooms));
+                        Console.WriteLine("Total Cost: " + foundGuest.calculateTotalCost(rooms));
 
 
                         break;
@@ -377,8 +377,8 @@ namespace Task6_oop_P2
 
 
                         break;
-                        //// Case 7 needs booked guests, so add guests and assign rooms using cases 1, 2, and 3 first.
-                
+                    //// Case 7 needs booked guests, so add guests and assign rooms using cases 1, 2, and 3 first.
+
                     case 7:
                         {
                             // check if there are  bookings
@@ -411,7 +411,7 @@ namespace Task6_oop_P2
 
                             var topGuests = guests
                                 .Where(g => g.RoomNumber != "Not Assigned")
-                                .OrderByDescending(g => g.CalculateTotalCost(rooms))
+                                .OrderByDescending(g => g.calculateTotalCost(rooms))
                                 .Take(3);
 
 
@@ -419,7 +419,7 @@ namespace Task6_oop_P2
                             {
                                 Console.WriteLine("Guest Name: " + g.GuestName);
                                 Console.WriteLine("Room Number: " + g.RoomNumber);
-                                Console.WriteLine("Total Cost: " + g.CalculateTotalCost(rooms).ToString("F2"));
+                                Console.WriteLine("Total Cost: " + g.calculateTotalCost(rooms).ToString("F2"));
 
                             }
 
@@ -431,7 +431,7 @@ namespace Task6_oop_P2
                                 .Where(g => g.RoomNumber != "Not Assigned")
                                 .Select(g => g.GuestName + " — Room " + g.RoomNumber +
                                 " — " + g.TotalNights + " nights — OMR " +
-                                g.CalculateTotalCost(rooms).ToString("F2"));
+                                g.calculateTotalCost(rooms).ToString("F2"));
 
 
                             foreach (string summary in guestSummary)
@@ -465,7 +465,7 @@ namespace Task6_oop_P2
 
                             updateRoom.PricePerNight = newPrice;
 
-                          // updated 
+                            // updated 
                             Console.WriteLine("Old Price: " + oldPrice.ToString("F2"));
                             Console.WriteLine("New Price: " + updateRoom.PricePerNight.ToString("F2"));
 
@@ -496,7 +496,7 @@ namespace Task6_oop_P2
 
 
                     case 10:
-                    
+                        { 
                         Console.WriteLine("Room Type Breakdown Report");
 
                         string[] roomTypes = { "Single", "Double", "Suite" };
@@ -526,7 +526,116 @@ namespace Task6_oop_P2
                         Console.WriteLine("\nOverall Average Price: " + overallAverage.ToString("F2"));
 
                         break;
+                }
+
+                    case 11:
+                        {
+                            Console.WriteLine("Enter Guest ID to check out:");
+                            string checkoutGuestId = Console.ReadLine();
+
+                            Guest checkoutGuest = guests.FirstOrDefault(g => g.GuestId == checkoutGuestId);
+
+                            if (checkoutGuest == null)
+                            {
+                                Console.WriteLine("Guest not found.");
+                                break;
+                            }
+
+                            if (checkoutGuest.RoomNumber == "Not Assigned")
+                            {
+                                Console.WriteLine("This guest has no active booking.");
+                                break;
+                            }
+
+                            Room checkoutRoom = rooms.FirstOrDefault(r => r.RoomNumber.ToString() == checkoutGuest.RoomNumber);
+
+                            if (checkoutRoom == null)
+                            {
+                                Console.WriteLine("Room is not found.");
+                                break;
+                            }
+
+                            // Final Bill
+                            Console.WriteLine("Final Bill");
+                            Console.WriteLine("Guest Name: " + checkoutGuest.GuestName);
+                            Console.WriteLine("Room Number: " + checkoutRoom.RoomNumber);
+                            Console.WriteLine("Room Type: " + checkoutRoom.RoomType);
+                            Console.WriteLine("Check-In Date: " + checkoutGuest.CheckInDate);
+                            Console.WriteLine("Total Nights: " + checkoutGuest.TotalNights);
+                            Console.WriteLine("Price Per Night: " + checkoutRoom.PricePerNight);
+                            Console.WriteLine("Total Cost: " + checkoutGuest.calculateTotalCost(rooms).ToString("F2"));
+
+                            Console.Write("Confirm checkout (Y/N): ");
+                            string confirm = Console.ReadLine();
+
+                            if (confirm.Equals("Y", StringComparison.OrdinalIgnoreCase))
+                            {
+                                checkoutRoom.IsAvailable = true;
+
+                                guests.Remove(checkoutGuest);
+
+                                Console.WriteLine("Checkout completed successfully.");
+
+                                Console.WriteLine("Remaining Guests: " + guests.Count);
+                                Console.WriteLine("Total Rooms: " + rooms.Count);
+
+                                Console.WriteLine("Room Available: " +
+                                    rooms.Any(r => r.RoomNumber == checkoutRoom.RoomNumber && r.IsAvailable));
+                            }
+                            else
+                            {
+                                Console.WriteLine("Checkout cancelled.");
+                            }
+
+                            break;
+                        }
+                    case 12:
+                        {
+                            var removableRooms = rooms
+                                .Where(r => !r.IsAvailable &&
+                                       !guests.Any(g => g.RoomNumber == r.RoomNumber.ToString()))
+                                .OrderBy(r => r.RoomNumber);
+
+                            if (!removableRooms.Any())
+                            {
+                                Console.WriteLine("All unavailable rooms are currently occupied. No rooms can be decommissioned.");
+                                break;
+                            }
+
+                            foreach (Room r in removableRooms)
+                            {
+                                Console.WriteLine("Room Number: " + r.RoomNumber);
+                                Console.WriteLine("Room Type: " + r.RoomType);
+                                Console.WriteLine("Price: " + r.PricePerNight);
+                            }
+
+                            Console.WriteLine("Removable Rooms Count: " + removableRooms.Count());
+
+                            Console.Write("Confirm removal (Y/N): ");
+                            string confirmRemove = Console.ReadLine();
+
+                            if (confirmRemove.Equals("Y", StringComparison.OrdinalIgnoreCase))
+                            {
+                                rooms.RemoveAll(r => !r.IsAvailable &&
+                                            !guests.Any(g => g.RoomNumber == r.RoomNumber.ToString()));
+
+                                Console.WriteLine("Updated total room count: " + rooms.Count);
+
+                                var remainingRooms = rooms
+                                    .Select(r => new { r.RoomNumber, r.RoomType });
+
+                                foreach (var item in remainingRooms)
+                                {
+                                    Console.WriteLine("Room Number: " + item.RoomNumber);
+                                    Console.WriteLine("Room Type: " + item.RoomType);
+                                }
+                            }
+
+                            break;
+                        }
+
                     case 0:
+
 
                         Console.WriteLine("Exit program");
                         break;
@@ -549,6 +658,6 @@ namespace Task6_oop_P2
             } while (choice != 0);
 
         }
-            }
+    }
     }
 

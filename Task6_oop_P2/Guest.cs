@@ -30,7 +30,7 @@ namespace Task6_oop_P2
             Console.WriteLine("Total Nights:" + TotalNights);
         }
 
-        public double CalculateTotalCost(List <Room> rooms) // Calculates based on room price and number of nights
+        public double calculateTotalCost(List <Room> rooms) // Calculates based on room price and number of nights
         {
             foreach (Room room in rooms) //  Go through each room in the rooms list
             {
