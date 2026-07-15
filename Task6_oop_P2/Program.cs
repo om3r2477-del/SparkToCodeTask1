@@ -634,6 +634,99 @@ namespace Task6_oop_P2
                             break;
                         }
 
+                    case 13:
+                        {
+                            Console.WriteLine("Enter Guest ID:");
+                            string extendGuestId = Console.ReadLine();
+
+                            Guest extendGuest = guests.FirstOrDefault(g => g.GuestId == extendGuestId);
+
+                            if (extendGuest == null)
+                            {
+                                Console.WriteLine("Guest not found.");
+                                break;
+                            }
+
+                            if (extendGuest.RoomNumber == "Not Assigned")
+                            {
+                                Console.WriteLine("This guest has no active booking to extend.");
+                                break;
+                            }
+
+                            Console.WriteLine("Enter additional nights:");
+                            int additionalNights;
+
+                            bool validInput = int.TryParse(Console.ReadLine(), out additionalNights);
+
+                            if (!validInput || additionalNights <= 0)
+                            {
+                                Console.WriteLine("Additional nights must be a positive integer.");
+                                break;
+                            }
+
+                            extendGuest.TotalNights += additionalNights;
+                            Console.WriteLine("Updated Total Nights: " + extendGuest.TotalNights);
+                            Console.WriteLine("New Total Cost: " + extendGuest.calculateTotalCost(rooms).ToString("F2"));
+
+                            break;
+                        }
+                    case 14:
+                        {
+                            var activeBookings = guests
+                                .Where(g => g.RoomNumber != "Not Assigned");
+
+                            if (!activeBookings.Any())
+                            {
+                                Console.WriteLine("No active bookings recorded.");
+                                break;
+                            }
+
+                            var highestRevenueBooking = activeBookings
+                                .Select(g => new
+                                {
+                                    GuestName = g.GuestName,
+                                    RoomNumber = g.RoomNumber,
+                                    TotalCost = g.calculateTotalCost(rooms)
+                                })
+                                .OrderByDescending(g => g.TotalCost)
+                                .Take(1);
+
+                            foreach (var booking in highestRevenueBooking)
+                            {
+                                Console.WriteLine("Highest Revenue Booking");
+                                Console.WriteLine("Guest Name: " + booking.GuestName);
+                                Console.WriteLine("Room Number: " + booking.RoomNumber);
+                                Console.WriteLine("Total Cost: " + booking.TotalCost.ToString("F2"));
+                            }
+
+                            break;
+                        }
+                    case 15:
+                        {
+                            int pageSize = 3;
+                            Console.WriteLine("Enter page number :");
+                            int pageNumber = Convert.ToInt32(Console.ReadLine());
+                            int totalPages = (int)Math.Ceiling((double)guests.Count() / pageSize);
+                            if(pageNumber < 1 || pageNumber > totalPages)
+                            {
+                                Console.WriteLine("the page dose not exist ");
+                                break;
+                            }
+                            var pageGuests = guests
+       .Skip((pageNumber - 1) * pageSize)
+       .Take(pageSize);
+
+                            foreach (Guest g in pageGuests)
+                            {
+                                Console.WriteLine("Guest Id" + g.GuestId);
+                                Console.WriteLine("Guest Name" + g.GuestName);
+                                Console.WriteLine("Room Number" + g.RoomNumber);
+                                Console.WriteLine("Check In Date" + g.CheckInDate);
+                                Console.WriteLine("TotalNights" + g.TotalNights);
+                                Console.WriteLine("...");
+                            }
+                            break;
+                        }
                     case 0:
 
 
