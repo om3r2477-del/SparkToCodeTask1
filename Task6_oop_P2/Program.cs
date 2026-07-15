@@ -706,12 +706,16 @@ namespace Task6_oop_P2
                             int pageSize = 3;
                             Console.WriteLine("Enter page number :");
                             int pageNumber = Convert.ToInt32(Console.ReadLine());
+                            // to calculate total number of pages using the number of guests
                             int totalPages = (int)Math.Ceiling((double)guests.Count() / pageSize);
-                            if(pageNumber < 1 || pageNumber > totalPages)
+                            // check if the page number is outside the available pages
+                            if (pageNumber < 1 || pageNumber > totalPages)
                             {
                                 Console.WriteLine("the page dose not exist ");
                                 break;
                             }
+                            // Use Skip() to skip guests from previous pages
+                            // Use Take() to get only the guests for the selected page
                             var pageGuests = guests
        .Skip((pageNumber - 1) * pageSize)
        .Take(pageSize);
