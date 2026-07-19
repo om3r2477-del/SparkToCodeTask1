@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="DataBaseTasks/Airplane_Task1.drawio.png" />
+  </Folder>
   <Project Path="ConsoleApp1/Task4.csproj" Id="7ad58a27-7d59-47e6-a650-84470da17cec" />
   <Project Path="miniProject1/miniProject1.csproj" Id="d6a1d9a2-fe20-4e16-9af1-bbe2df476b34" />
   <Project Path="Task1/Task1.csproj" />
