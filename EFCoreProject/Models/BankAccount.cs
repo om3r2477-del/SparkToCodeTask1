@@ -7,9 +7,9 @@ namespace EFCoreProject.Models
     public class BankAccount
     {
         public int ID { get; set; }
-        public string AccountNumber { get; set; }
+        public int AccountNumber { get; set; }
         public string AccountType { get; set; }
-        public decimal Balance { get; set; }
+        public decimal Balances { get; set; }
         public string Currency { get; set; }
         public DateTime OpenDate { get; set; }
         public string Status { get; set; }
