@@ -13,6 +13,7 @@
     <File Path="DataBaseTasks/CompanyDataBase.jfif" />
   </Folder>
   <Project Path="ConsoleApp1/Task4.csproj" Id="7ad58a27-7d59-47e6-a650-84470da17cec" />
+  <Project Path="EFCoreProject/EFCoreProject.csproj" Id="7e57d5b8-acc3-403f-ab37-0f869d84b743" />
   <Project Path="miniProject1/miniProject1.csproj" Id="d6a1d9a2-fe20-4e16-9af1-bbe2df476b34" />
   <Project Path="Task1/Task1.csproj" />
   <Project Path="Task2/Task2.csproj" Id="917a684e-e09f-4f8d-b3fa-69a2ff58ae0e" />
