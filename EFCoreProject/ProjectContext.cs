@@ -12,7 +12,7 @@ namespace EFCoreProject
        public DbSet<BankAccount> bankAccounts { get; set; }
 
 
-     public   DbSet<Bank> banks { get; set; }
+     
 
         //2- connect to database
 
