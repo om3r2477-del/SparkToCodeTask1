@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace EFCoreProject.Models
 {
     public class Bank
     {
-        public int ID { get; set; }
+        [Key]
+        public int BID { get; set; }   // Primary Key
+
         public string BankName { get; set; }
         public string BranchName { get; set; }
         public string BranchCode { get; set; }
