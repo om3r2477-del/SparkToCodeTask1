@@ -128,10 +128,20 @@ namespace ECommerceApp
             {
                 Console.WriteLine("Wrong Email or Password");
             }
+        }
 
 
         static void AddCategory()
         {
+            Category category = new Category();
+
+            Console.Write("Enter Category Name: ");
+            category.CategoryName = Console.ReadLine();
+
+            context.Categories.Add(category);
+            context.SaveChanges();
+
+            Console.WriteLine("Category Added Successfully");
 
         }
 
