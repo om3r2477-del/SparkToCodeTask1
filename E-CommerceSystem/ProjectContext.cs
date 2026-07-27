@@ -8,6 +8,7 @@ namespace E_CommerceSystem
 {
     public class ProjectContext : DbContext
     {
+        // tables
         public DbSet<User> Users { get; set; }
 
         public DbSet<Category> Categories { get; set; }
@@ -20,7 +21,7 @@ namespace E_CommerceSystem
 
         public DbSet<OrderProduct> OrderProducts { get; set; }
 
-
+        // connection
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(
