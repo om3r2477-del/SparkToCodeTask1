@@ -107,8 +107,27 @@ namespace ECommerceApp
 
         static void Login()
         {
+            Console.Write("Enter Email: ");
+            string email = Console.ReadLine();
 
-        }
+            Console.Write("Enter Password: ");
+            string password = Console.ReadLine();
+
+            // to find user by email and password    
+            // FirstOrDefault means find for first user
+            User user = context.Users
+                .FirstOrDefault(u => u.UserEmail == email && u.UserPassword == password);
+
+
+            if (user != null)
+            {
+                loggedInUserId = user.UserId;
+                Console.WriteLine("Login Successful");
+            }
+            else
+            {
+                Console.WriteLine("Wrong Email or Password");
+            }
 
 
         static void AddCategory()
