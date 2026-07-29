@@ -7,5 +7,10 @@ namespace WebApiProject
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+
+        public ProjectContext(DbContextOptions<ProjectContext> options) : base(options)
+        {
+
+        }
     }
 }
