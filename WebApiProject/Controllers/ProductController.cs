@@ -16,6 +16,7 @@ namespace WebApiProject.Controllers
         }
       //  ProductContext context = new Product();
 
+        // request method => post
         [HttpPost("AddProduct")]
         public IActionResult AddProduct(Product p)
         {
@@ -25,6 +26,7 @@ namespace WebApiProject.Controllers
 
             return Ok(p.ProductId);
         }
+        // request method => delete
         [HttpDelete("RemoveProduct")]
         public IActionResult RemoveProduct(int id)
         {

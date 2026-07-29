@@ -1,17 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using WebApiProject.Models;
 
-namespace WebApiProject.Models
+namespace WebAPIProject.Models
 {
-    public class Category
+    public class Brand
     {
         [Key]
         [JsonIgnore]
-        public int CategoryId { get; set; }
+        public int BrandId { get; set; }
+
         [Required]
-        public string CategoryName { get; set; }
+        public string BrandName { get; set; }
+
         [Required]
-        public string CategoryDescription { get; set; }
+        public string Country { get; set; }
 
         [JsonIgnore]
         public List<Product>? Products { get; set; }
